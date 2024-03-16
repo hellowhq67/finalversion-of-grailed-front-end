@@ -81,7 +81,7 @@ function ProductDetail({ productId }) {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/products/${productId}`
+          `https://adminpanellive.vercel.app/api/products/${productId}`
         );
         setProduct(response.data.products);
         setLoading(false);
