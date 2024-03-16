@@ -119,7 +119,7 @@ export default function SellForm() {
 
   const handlePostSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/products", {
+      const response = await fetch("https://adminpanellive.vercel.app/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
