@@ -201,7 +201,7 @@ export const AuthContextProvider = ({ children }) => {
               bacth: 'Item as described',
               productName: "Nike Vintage Y2K Nylon Baggy Track Pants Double Swoosh",
               desinger: "",
-              productimgae: "https://utfs.io/f/03f7b00c-d66c-42fd-a953-847bf6b0f448-y3jerb.avif",
+              productimgae: "https://media-assets.grailed.com/prd/listing/temp/9bd7f114f90e4c85a799184484e5aa2f?w=120&fit=clip&q=40&auto=format",
               customerId: "",
               customerDisplayName: "freed"
             },
@@ -235,12 +235,7 @@ export const AuthContextProvider = ({ children }) => {
           follow: [],
           wishlist: [],
           transtion: 0,
-          addressname: currentUser.name,
-          streetaddress: currentUser.streetaddress,
-          country: currentUser.country,
-          apt: currentUser.apt,
-          state: currentUser.state,
-          zipcode: currentUser.zipcode,
+    
 
 
         };
