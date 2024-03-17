@@ -31,6 +31,7 @@ import { UseAuth } from "@/app/context/AuthContext";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { ToastContainer, toast } from "react-toastify";
 import ProductSilder from "../productSildersq/ProductSilder";
+import Modals from "../authModal/Modals";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -58,9 +59,17 @@ const style = {
   alignItems: "center",
   gap: "1rem",
 };
-
+const fetchProducts = async () => {
+  try {
+    const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+    return response.data.products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+};
 function ProductDetail({ productId }) {
-  const {user} =UseAuth();
+  const { user, getAllUsersData } = UseAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = React.useState(false);
@@ -72,10 +81,30 @@ function ProductDetail({ productId }) {
   const [open3, setOpen3] = React.useState(false);
   const handleOpen3 = () => setOpen3(true);
   const handleClose3 = () => setOpen3(false);
+  const [open4, setOpen4] = React.useState(false);
+  const handleOpen4 = () => setOpen4(true);
+  const handleClose4 = () => setOpen4(false);
   const [expanded, setExpanded] = React.useState(false);
+  const [sellerProduct, setSellerproduct] = useState("");
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const [userData, setUserData] = useState({
+    location: "",
+    userDisplayName: "",
+    userBio: "",
+    reting: "",
+    transaction: "",
+    profileImage: "",
+    name: "",
+    streetAddress: "",
+    country: "",
+    apt: "",
+    state: "",
+    zipcode: "",
+    feedbacks: Number,
+    feedbacksdata: [],
+  });
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -93,6 +122,56 @@ function ProductDetail({ productId }) {
 
     fetchProduct();
   }, [productId]);
+  const sellerID = product ? product.userId : "";
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching data
+
+        const usersData = await getAllUsersData();
+        const users = usersData.find((user) => user.userid === sellerID);
+
+        if (users) {
+          setUserData({
+            reting: users.reting || "",
+            transaction: users.feedbacks.length || "",
+            profileImage: users.profileimgae || "",
+            feedbacks: users.feedbacks.length || "",
+            feedbacksdata: [users.feedbacks] || "",
+          });
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              userBio: user.bio || "",
+              reting: users.reting || "",
+              transaction: users.feedbacks.length || "",
+              profileImage: users.profileimgae || "",
+              feedbacks: users.feedbacks.length || "",
+              feedbacksdata: [users.feedbacks] || "",
+            })
+          );
+        }
+
+        const fetchData = async () => {
+          const allProducts = await fetchProducts();
+          const filteredProducts = allProducts.filter(
+            (product) => product.userId === sellerID
+          );
+
+          setSellerproduct(filteredProducts);
+          setLoading(false);
+        };
+
+        fetchData();
+        setLoading(false); // Set loading to false after fetching data
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [getAllUsersData, sellerID]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -282,6 +361,7 @@ function ProductDetail({ productId }) {
             </Box>
           </Fade>
         </Modal>
+        <Modals handleOpen={handleOpen4} open={open4} handleClose={handleClose4} />
 
         <Navbar />
         <div style={{ marginTop: "5rem", borderBottom: "1px solid black" }}>
@@ -353,13 +433,26 @@ function ProductDetail({ productId }) {
                 </select>{" "}
               </span>
 
-              <button
-                className={styles.btn1}
-                disabled={loading}
+            {!user?
+            (
+              <button className={styles.btn1} onClick={handleOpen4}>
+           
+                {"PURCHEASE"}
+           
+            </button>
+            ):(
+              <button className={styles.btn1} disabled={loading}>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                href={`/checkout/${product._id}/${!user ? "" : user.uid}`}
               >
-          <Link style={{textDecoration:"none",color:"white"}} href={`/checkout/${product._id}/${!user?(""):user.uid}`}>{'PURCHEASE'}</Link>
-              </button>
-         
+                {"PURCHEASE"}
+              </Link>
+            </button>
+            )
+
+            }
+
               {product.acceptOffer ? (
                 <button className={styles.btn2} onClick={handleOpen2}>
                   OFFER
@@ -372,20 +465,34 @@ function ProductDetail({ productId }) {
               </button>
 
               <hr />
-              <Link
+            {!user?(
+                <Link
                 style={{
                   textDecoration: "none",
                   color: "black",
                   display: "flex",
                 }}
-                href={`/profile/designer/${product.userId}`}
+                onClick={handleOpen4}
+                href={``}
               >
-                <img
-                  width={40}
-                  height={40}
-                  src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
-                  alt=""
-                />
+                {!userData ? (
+                  <img
+                    width={40}
+                    height={40}
+                    src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
+                    alt=""
+                  />
+                ) : (
+                  <>
+                    <img
+                      width={40}
+                      height={40}
+                      style={{ borderRadius: "50%" }}
+                      src={userData.profileImage}
+                      alt=""
+                    />
+                  </>
+                )}
                 <div>
                   <div
                     style={{
@@ -415,9 +522,11 @@ function ProductDetail({ productId }) {
                     <p>{" 3reivews"}</p>
                   </span>
                   <div style={{ margin: "10px 0px", fontSize: "14px" }}>
-                    {"9 Transactions "}
+                    {`${userData.transaction}  Transactions`}
                     <Link href="" style={{ color: "black" }}>
-                      12 items for sell
+                      {`.${
+                        sellerProduct ? sellerProduct.length : 0
+                      } items for sell`}
                     </Link>
                   </div>
                   <div
@@ -480,6 +589,132 @@ function ProductDetail({ productId }) {
                   <button className={styles.followbtn}>Follow</button>
                 </div>
               </Link>
+            ):(
+              <Link
+              style={{
+                textDecoration: "none",
+                color: "black",
+                display: "flex",
+              }}
+              href={`/profile/designer/${product.userId}`}
+            >
+              {!userData ? (
+                <img
+                  width={40}
+                  height={40}
+                  src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
+                  alt=""
+                />
+              ) : (
+                <>
+                  <img
+                    width={40}
+                    height={40}
+                    style={{ borderRadius: "50%" }}
+                    src={userData.profileImage}
+                    alt=""
+                  />
+                </>
+              )}
+              <div>
+                <div
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: "black",
+                  }}
+                >
+                  {product.userName}
+                </div>
+                <span
+                  style={{
+                    margin: "5px 0px",
+                    color: "black",
+                    display: "flex",
+                    fontSize: "12px",
+                    alignItems: "center",
+                  }}
+                >
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={2.5}
+                    precision={0.5}
+                    readOnly
+                    style={{ color: "green", fontSize: "13px" }}
+                  />
+                  <p>{" 3reivews"}</p>
+                </span>
+                <div style={{ margin: "10px 0px", fontSize: "14px" }}>
+                  {`${userData.transaction}  Transactions`}
+                  <Link href="" style={{ color: "black" }}>
+                    {`.${
+                      sellerProduct ? sellerProduct.length : 0
+                    } items for sell`}
+                  </Link>
+                </div>
+                <div
+                  style={{
+                    margin: "10px 0px",
+                    fontSize: "14px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      width={20}
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                      />
+                    </svg>
+                    FAST SHIPPER
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      width={20}
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+                      />
+                    </svg>
+                    quick reply
+                  </span>
+                </div>
+
+                <button className={styles.followbtn}>Follow</button>
+              </div>
+            </Link>
+            )
+
+            }
 
               <div className={styles.feedFlex}>
                 <h4>{"Seller FeedBack"}</h4>
@@ -498,6 +733,8 @@ function ProductDetail({ productId }) {
                 modules={[Pagination]}
                 className={styles.swiper}
               >
+                {!user ? (
+                <>
                 <SwiperSlide className={styles.swiperslide}>
                   <Link
                     style={{
@@ -541,7 +778,8 @@ function ProductDetail({ productId }) {
                           {product.designers}
                         </Link>
                         <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double Swoosh
+                          Nike Vintage Y2K Nylon Baggy Track Pants Double
+                          Swoosh
                         </p>
                       </div>
                     </div>
@@ -596,7 +834,8 @@ function ProductDetail({ productId }) {
                           {product.designers}
                         </Link>
                         <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double Swoosh
+                          Nike Vintage Y2K Nylon Baggy Track Pants Double
+                          Swoosh
                         </p>
                       </div>
                     </div>
@@ -619,7 +858,8 @@ function ProductDetail({ productId }) {
                       alignItems: "center",
                       fontSize: "14px",
                     }}
-                    href={`/profile/designer/${product.userId}`}
+                    href={``}
+                    onClick={handleOpen4}
                   >
                     <div>
                       <div
@@ -652,7 +892,8 @@ function ProductDetail({ productId }) {
                           {product.designers}
                         </Link>
                         <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double Swoosh
+                          Nike Vintage Y2K Nylon Baggy Track Pants Double
+                          Swoosh
                         </p>
                       </div>
                     </div>
@@ -664,6 +905,180 @@ function ProductDetail({ productId }) {
                     />
                   </Link>
                 </SwiperSlide>
+              </>
+                ) : (
+                  <>
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
+                        }}
+                        href={`/profile/designer/${product.userId}`}
+                      >
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
+
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
+                        />
+                      </Link>
+                    </SwiperSlide>
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
+                        }}
+                        href={`/profile/designer/${product.userId}`}
+                      >
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
+
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
+                        />
+                      </Link>
+                    </SwiperSlide>
+
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
+                        }}
+                        href={`/profile/designer/${product.userId}`}
+                      >
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
+
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
+                        />
+                      </Link>
+                    </SwiperSlide>
+                  </>
+                )}
               </Swiper>
 
               <div>
