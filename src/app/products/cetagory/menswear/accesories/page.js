@@ -112,7 +112,7 @@ export default function page() {
 
       </div>
       <div className={style.wrapper2}>
-        <span style={{ fontWeight: "bold" }}>{products.length} listings <span>{`mens > bottom`}</span></span>
+        <span style={{ fontWeight: "bold" }}>{products.length} listings <span>{`MENS > ACCESSORIES`}</span></span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
           <select className={style.selectFliter} onChange={handleSortChange}>
