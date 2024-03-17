@@ -30,8 +30,9 @@ export default function page() {
     try {
       const response = await axios.get('https://adminpanellive.vercel.app/api/products');
       // Filter products with category "TOPS" and department "MENSWEAR"
-      const filteredProducts = response.data.products.filter(product => product.category === "BOTTOMS" && product.department === "ACCESSORIES");
+      const filteredProducts = response.data.products.filter(product => product.category === "ACCESSORIES" && product.department === "MENSWEAR");
       setProducts(filteredProducts);
+
     } catch (error) {
       console.error('Error fetching products:', error);
     }
