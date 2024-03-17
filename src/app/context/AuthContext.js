@@ -2,7 +2,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { collection, doc, setDoc, getDocs, updateDoc, getDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, updateDoc, getDoc, Timestamp } from "firebase/firestore";
 
 
 const AuthContext = createContext();
@@ -235,6 +235,7 @@ export const AuthContextProvider = ({ children }) => {
           follow: [],
           wishlist: [],
           transtion: 0,
+          joinDate: Timestamp.now(), 
     
 
 
