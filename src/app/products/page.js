@@ -52,7 +52,7 @@ export default function page() {
       try {
         const response = await fetch('https://adminpanellive.vercel.app/api/products/total');
         const data = await response.json();
-        const totalProducts = data.total; // Assuming API response contains total number of products
+        const totalProducts = data.length; // Assuming API response contains total number of products
         const itemsPerPage = 10; // Replace with your limit per page
         const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
         setTotalPages(totalPagesCount);
