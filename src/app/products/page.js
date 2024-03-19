@@ -7,10 +7,10 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import axios from 'axios'
 import Link from 'next/link';
 import Footer from '@/components/Navigations/Footer'
 import Pagination from '@mui/material/Pagination';
+import axios from 'axios'
 export default function page() {
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
@@ -51,20 +51,22 @@ export default function page() {
   useEffect(() => {
     const fetchTotalProducts = async () => {
       try {
-       const response = await axios.get('http://localhost:3001/api/products/total');
+        const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       
         const totalProducts =response.data.products.length;
+        
+
         const itemsPerPage = 6; // Replace with your limit per page
         const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
         setTotalPages(totalPagesCount);
-
+        console.log(totalProducts)
         // Fetch products for the initial page
         fetchProducts(page);
       } catch (error) {
         console.error('Error fetching total products:', error);
       }
-    };
-
+    }; 
+    
     fetchTotalProducts();
   }, []);
 
