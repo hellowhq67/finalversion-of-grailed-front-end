@@ -26,7 +26,7 @@ export default function page() {
   const fetchProducts = async (pageNum) => {
     setIsFetching(true);
     try {
-      const response = await fetch(`https://adminpanellive.vercel.app/api/products?page=${pageNum}&limit=10`);
+      const response = await fetch(`https://adminpanellive.vercel.app/api/products?page=${pageNum}&limit=6`);
       const data = await response.json();
       const newProducts = data.products; // Assuming API response contains products array
       if (newProducts.length > 0) {
@@ -50,10 +50,10 @@ export default function page() {
   useEffect(() => {
     const fetchTotalProducts = async () => {
       try {
-        const response = await fetch('https://adminpanellive.vercel.app/api/products/total');
-        const data = await response.json();
-        const totalProducts = data.length; // Assuming API response contains total number of products
-        const itemsPerPage = 10; // Replace with your limit per page
+       const response = await axios.get('http://localhost:3001/api/products/total');
+      
+        const totalProducts =response.data.products.length;
+        const itemsPerPage = 6; // Replace with your limit per page
         const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
         setTotalPages(totalPagesCount);
 
