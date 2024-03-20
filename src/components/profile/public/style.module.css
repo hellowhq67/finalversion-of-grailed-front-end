@@ -12,7 +12,7 @@
   align-items: center;
   gap: 5px;
 }
-.infos{
+.infos {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -185,18 +185,16 @@
   flex-direction: column;
   gap: 20px;
 }
-.close{
+.close {
   display: none;
 }
 @media (max-width: 750px) {
   .profileCol {
     display: flex;
     align-items: flex-start;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
-    padding: 0px 2rem;
-    width: 100%;
+    gap: 10px;
   }
   .proimg {
     display: flex;
@@ -204,11 +202,12 @@
     gap: 20px;
   }
   .proImgae {
-    width: 100px;
+    width: 70px;
+    height: 70px;
   }
   .profileWrapper {
     width: 100%;
-    padding: 2rem;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -219,9 +218,10 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding: 0px;
   }
   .bio {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -229,7 +229,64 @@
   .close {
     display: block;
   }
+  .tabButton {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edits {
+    padding:  7px 29px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+  .buttonCol {
+    display: flex;
+    gap: 10px;
+  }
+  .shear{
+    padding: 0px 5px;
+  }
+  .shear svg{
+    font-weight: 200;
+   width: 20px;
+   height: 20px;
+  }
+  
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .productFilter {
   width: 15vw;
   overflow: scroll;
@@ -362,46 +419,45 @@
 .fiterButton {
   display: none;
 }
-@media (max-width:750px) {
-  .hearContent{
+@media (max-width: 750px) {
+  .hearContent {
     display: none;
   }
-  .fiterButton{
-    display:block;
+  .fiterButton {
+    display: block;
     margin: 10px 20px;
   }
   .productFilter {
     width: 100vw;
     overflow: scroll;
     height: 100vh;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none; 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
     position: absolute;
     top: 14%;
     left: 0;
     z-index: 999;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
     background: white;
   }
 
-  
   .productFilter.closed {
     transform: translateX(-100%);
     /* Hide the sidebar when closed */
   }
-  
+
   .wrapper {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    margin:0;
+    margin: 0;
     width: 100%;
-    height: 100%
+    height: 100%;
   }
   .wrapper2 {
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     margin-top: 2rem;
     width: 100vw;
     height: 100%;
@@ -416,7 +472,7 @@
     height: 100%;
     font-size: 15px;
   }
-  .selectFliter{
+  .selectFliter {
     display: none;
   }
   .ProductSildes {
@@ -434,11 +490,10 @@
     width: 100%;
     height: auto;
   }
-  .title{
+  .title {
     font-size: 16px;
   }
-  .descCol p{
+  .descCol p {
     font-size: 10px;
-
   }
 }
