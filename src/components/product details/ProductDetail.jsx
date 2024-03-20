@@ -61,7 +61,7 @@ const style = {
 };
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -110,7 +110,7 @@ function ProductDetail({ productId }) {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `https://adminpanellive.vercel.app/api/products/${productId}`
+          `https://adminpanellive.vercel.app/api/products/total${productId}`
         );
         setProduct(response.data.products);
         setLoading(false);
