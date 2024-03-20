@@ -1049,7 +1049,7 @@ export default function Public({ sellerID }) {
                             >
                               <div className={style.imgCol}>
                                 <img src={x.productImage1} alt="" />
-                                <span className={style.tags}>{x.vendor}</span>
+
                               </div>
                               <p>
                                 {" "}
