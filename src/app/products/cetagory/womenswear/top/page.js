@@ -17,39 +17,7 @@ export default function page() {
 
 
 
-  const datas = [
-    {
-      img: "https://media-assets.grailed.com/prd/misc/e671efc39e7e48968c6e0299d3ccd612?w=180&h=180&fit=clip&q=40&auto=format",
-      title: "On location:Berlin",
-      collectionName: "Sweatshirts & Hoodies",
-      path: "/reads/",
-    },
-    {
-      img: "https://media-assets.grailed.com/prd/detail-page/5d268498da23442fa03169ff15113ea8?w=180&h=180&fit=clip&q=40&auto=format",
-      title: "Kintweare Essentials",
-      collectionName: "Long Sleeve T-Shirts",
-      path: "/collectoins/",
-    },
-
-    {
-      img: "https://media-assets.grailed.com/prd/detail-page/578ef720b4ae4800900da2df48c95551?w=180&h=180&fit=clip&q=40&auto=format",
-      title: "EveryThing Vintage",
-      collectionName: "Short Sleeve T-Shirts",
-      path: "",
-    },
-    {
-      img: "https://media-assets.grailed.com/prd/detail-page/245366e6a4374a3e8200b54efd0871bc?w=180&h=180&fit=clip&q=40&auto=format",
-      title: "Post-Sneaker World",
-      collectionName: "Sweaters & Knitwear",
-      path: "",
-    },
-    {
-      img: "https://media-assets.grailed.com/prd/detail-page/245366e6a4374a3e8200b54efd0871bc?w=180&h=180&fit=clip&q=40&auto=format",
-      title: "Post-Sneaker World",
-      collectionName: "Polos",
-      path: "",
-    },
-  ]; 
+ 
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
@@ -61,7 +29,7 @@ export default function page() {
   }, []);
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       // Filter products with category "TOPS" and department "MENSWEAR"
       const filteredProducts = response.data.products.filter(product => product.category === "TOPS" && product.department === "WOMENSWEAR");
       setProducts(filteredProducts);
