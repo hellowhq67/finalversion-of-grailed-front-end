@@ -497,10 +497,11 @@ export default function page() {
 
 
 
+      
         <div className={style.ProCol}>
           <div className={style.productWrapprer}>
 
-            {!products ? (<div>loading...</div>) : products.filter(filterProducts).map((x) => {
+            {products.filter(filterProducts).map((x) => {
               return <>
 
                 <div key={x._id} className={style.ProductSildes}>
@@ -551,17 +552,15 @@ export default function page() {
             }
 
           </div>
-          <div>
-            <Pagination
-              style={{ width: "500px" }}
-              count={totalPages}
-              shape="rounded"
-              page={page}
-              onChange={handlePagination}
-            />
-          </div>
-
+          <Pagination
+          style={{margin:"20px"}}
+            count={totalPages}
+            shape="rounded"
+            page={page}
+            onChange={handlePagination}
+          />
         </div>
+
 
 
 
