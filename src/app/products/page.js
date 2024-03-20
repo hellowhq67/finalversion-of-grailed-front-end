@@ -23,7 +23,7 @@ export default function page() {
   const [hasMore, setHasMore] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
-
+  const [totalpro,settotalpro]=useState('')
   const fetchProducts = async (pageNum) => {
     setIsFetching(true);
     try {
@@ -54,7 +54,7 @@ export default function page() {
         const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       
         const totalProducts =response.data.products.length;
-        
+         settotalpro(totalProducts)
 
         const itemsPerPage = 6; // Replace with your limit per page
         const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
@@ -145,7 +145,7 @@ export default function page() {
 
       </div>
       <div className={style.wrapper2}>
-        <span style={{ fontWeight: "bold" }}>{products.length} listings</span>
+        <span style={{ fontWeight: "bold" }}>{totalpro} listings</span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
           <select className={style.selectFliter} onChange={handleSortChange}>
