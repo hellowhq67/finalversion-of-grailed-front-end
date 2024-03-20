@@ -13,49 +13,7 @@ import Footer from '@/components/Navigations/Footer'
 
 export default function page() {
 
-  const followProduct = async (productId) => {
-    try {
-      const response = await fetch('http://localhost:3001/api/follow', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          userId: "afsaf",
-          productId: "fpshf"
-        })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Product followed successfully, show alert or update UI
-        alert(data.message);
-        // Update UI or perform any other action as needed
-      } else {
-        // Handle other status codes, if needed
-        console.error('Error:', data.message);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const unfollowProduct = async (productId) => {
-    try {
-      const response = await axios.delete(`http://localhost:3001/api/follow/${productId}`);
-      console.log(response.data.message); // Optionally log success message
-      // Add logic to handle success, e.g., updating UI
-    } catch (error) {
-      console.error('Error unfollowing product:', error);
-      // Add logic to handle error, e.g., showing an error message
-    }
-  };
-
-  const showToast = (message) => {
-    // Implement your toast notification logic here
-    alert(message);
-  };
+  
 
 
   const [products, setProducts] = useState([]);
@@ -70,7 +28,7 @@ export default function page() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://adminpanellive.vercel.app/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       // Filter products where userName is "STAFPRODUCTS"
       const filteredProducts = response.data.products.filter(product => product.userName === 'STAFPRODUCTS');
       setProducts(filteredProducts);
