@@ -9,7 +9,7 @@ import axios from "axios";
 import { Rating, StarIcon } from "@mui/material";
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -79,7 +79,7 @@ export default function SellPro({ userID }) {
   );
   const handleDeleteProduct = async (productId) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/api/products/${productId}`);
+      const response = await axios.delete(`https://adminpanellive.vercel.app/api/products/total/${productId}`);
       console.log("Product deleted successfully:", response.data);
       // Update the products state to remove the deleted product
       setProducts(products.filter((product) => product._id !== productId));
