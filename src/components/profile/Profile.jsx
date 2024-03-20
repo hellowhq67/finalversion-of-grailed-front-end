@@ -13,7 +13,7 @@ import axios from "axios";
 import { Rating, StarIcon } from "@mui/material";
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
     console.log("res", response);
     return response.data.products;
   } catch (error) {
