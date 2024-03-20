@@ -231,7 +231,7 @@ export default function Public({ sellerID }) {
 
           <div className={style.profileInfo}>
             <div>
-              <span>
+              <span style={{display:"flex",alignItems:"center"}} >
                 {" "}
                 {userData.feedbacks}
                 <Rating
