@@ -26,6 +26,9 @@
   justify-content: flex-start;
   width: 15rem;
 }
+.btn svg{
+  color: #000000;
+}
 .imgCol {
   position: relative;
 }
