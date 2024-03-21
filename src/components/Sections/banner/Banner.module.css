@@ -31,12 +31,16 @@
   padding: 14px 20px;
   margin: 10px 20px;
   background: transparent;
-  color: whitesmoke;
+
   border: 2px solid white;
   transition: .3s ease;
 }
 .btn:hover{
   background: blue;
+}
+.btn a{
+ text-decoration: none;
+ color: #ffff;
 }
 
 .bannerCOl{
