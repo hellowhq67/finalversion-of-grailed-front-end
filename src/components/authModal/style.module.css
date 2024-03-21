@@ -13,27 +13,54 @@
   margin: 10px 0px;
   font-size: 17px;
   font-weight: 500;
-  
 }
-.btn{
-    color: white;
-    background: black;
-    border: none;
-    cursor: pointer;
-}
-
-.btn1{
-    color: white;
-    background: rgb(42, 76, 162);
-    border: none;
-    cursor: pointer;
-}
-.btn2{
-    color: rgb(0, 0, 0);
-    cursor: pointer;
+.btn {
+  color: white;
+  background: black;
+  border: none;
+  cursor: pointer;
 }
 
-.btn4{
+.btn1 {
+  color: white;
+  background: rgb(42, 76, 162);
+  border: none;
+  cursor: pointer;
+}
+.btn2 {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 40px;
+}
+.col input {
+  padding: 18px 50px;
+  z-index: 1;
+  border: 1px solid black;
+  width: 100%;
+
+}
+.Btn{
+  padding: 18px 50px;
+  width: 100%;
+  margin: 20px 0px;
+  z-index: 1;
+  border: 1px solid #000000;
+  color: #ffffff;
+  background: #000000;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.btn4 {
   color: white;
   background: black;
   border: none;
