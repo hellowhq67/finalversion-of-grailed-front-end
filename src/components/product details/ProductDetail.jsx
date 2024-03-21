@@ -61,7 +61,9 @@ const style = {
 };
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
+    const response = await axios.get(
+      "https://adminpanellive.vercel.app/api/products/total/"
+    );
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -72,7 +74,7 @@ function ProductDetail({ productId }) {
   const { user, getAllUsersData } = UseAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-    const [selectedShipping, setSelectedShipping] = useState("");
+  const [selectedShipping, setSelectedShipping] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -152,9 +154,6 @@ function ProductDetail({ productId }) {
             })
           );
         }
- const handleShippingChange = (event) => {
-    setSelectedShipping(event.target.value);
-  };
 
         const fetchData = async () => {
           const allProducts = await fetchProducts();
@@ -181,9 +180,12 @@ function ProductDetail({ productId }) {
     return <div>Loading...</div>;
   }
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+
+
+  // Function to handle change in the select input
+  const handleShippingChange = (event) => {
+    setSelectedShipping(event.target.value);
+  };
 
   return (
     <>
@@ -365,7 +367,11 @@ function ProductDetail({ productId }) {
             </Box>
           </Fade>
         </Modal>
-        <Modals handleOpen={handleOpen4} open={open4} handleClose={handleClose4} />
+        <Modals
+          handleOpen={handleOpen4}
+          open={open4}
+          handleClose={handleClose4}
+        />
 
         <Navbar />
         <div style={{ marginTop: "5rem", borderBottom: "1px solid black" }}>
@@ -428,7 +434,7 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-        <span>
+              <span>
                 Shipping — {selectedShipping } {product.shippings }
                 <select
                 style={{borderBottom:"1px solid #000000",background:"none",}}
@@ -443,25 +449,20 @@ function ProductDetail({ productId }) {
                 </select>
               </span>
 
-            {!user?
-            (
-              <button className={styles.btn1} onClick={handleOpen4}>
-           
-                {"PURCHEASE"}
-           
-            </button>
-            ):(
-              <button className={styles.btn1} disabled={loading}>
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                href={`/checkout/${product._id}/${!user ? "" : user.uid}`}
-              >
-                {"PURCHEASE"}
-              </Link>
-            </button>
-            )
-
-            }
+              {!user ? (
+                <button className={styles.btn1} onClick={handleOpen4}>
+                  {"PURCHEASE"}
+                </button>
+              ) : (
+                <button className={styles.btn1} disabled={loading}>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    href={`/checkout/${product._id}/${!user ? "" : user.uid}`}
+                  >
+                    {"PURCHEASE"}
+                  </Link>
+                </button>
+              )}
 
               {product.acceptOffer ? (
                 <button className={styles.btn2} onClick={handleOpen2}>
@@ -475,256 +476,254 @@ function ProductDetail({ productId }) {
               </button>
 
               <hr />
-            {!user?(
+              {!user ? (
                 <Link
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  display: "flex",
-                }}
-                onClick={handleOpen4}
-                href={``}
-              >
-                {!userData ? (
-                  <img
-                    width={40}
-                    height={40}
-                    src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
-                    alt=""
-                  />
-                ) : (
-                  <>
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: "flex",
+                  }}
+                  onClick={handleOpen4}
+                  href={``}
+                >
+                  {!userData ? (
                     <img
                       width={40}
                       height={40}
-                      style={{ borderRadius: "50%" }}
-                      src={userData.profileImage}
+                      src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
                       alt=""
                     />
-                  </>
-                )}
-                <div>
-                  <div
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "500",
-                      color: "black",
-                    }}
-                  >
-                    {product.userName}
-                  </div>
-                  <span
-                    style={{
-                      margin: "5px 0px",
-                      color: "black",
-                      display: "flex",
-                      fontSize: "12px",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={2.5}
-                      precision={0.5}
-                      readOnly
-                      style={{ color: "green", fontSize: "13px" }}
-                    />
-                    <p>{" 3reivews"}</p>
-                  </span>
-                  <div style={{ margin: "10px 0px", fontSize: "14px" }}>
-                    {`${userData.transaction}  Transactions`}
-                    <Link href="" style={{ color: "black" }}>
-                      {`.${
-                        sellerProduct ? sellerProduct.length : 0
-                      } items for sell`}
-                    </Link>
-                  </div>
-                  <div
-                    style={{
-                      margin: "10px 0px",
-                      fontSize: "14px",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
-                    }}
-                  >
+                  ) : (
+                    <>
+                      <img
+                        width={40}
+                        height={40}
+                        style={{ borderRadius: "50%" }}
+                        src={userData.profileImage}
+                        alt=""
+                      />
+                    </>
+                  )}
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        color: "black",
+                      }}
+                    >
+                      {product.userName}
+                    </div>
                     <span
                       style={{
-                        fontSize: "12px",
+                        margin: "5px 0px",
+                        color: "black",
                         display: "flex",
+                        fontSize: "12px",
                         alignItems: "center",
                       }}
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        width={20}
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
-                        />
-                      </svg>
-                      FAST SHIPPER
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={2.5}
+                        precision={0.5}
+                        readOnly
+                        style={{ color: "green", fontSize: "13px" }}
+                      />
+                      <p>{" 3reivews"}</p>
                     </span>
-                    <span
+                    <div style={{ margin: "10px 0px", fontSize: "14px" }}>
+                      {`${userData.transaction}  Transactions`}
+                      <Link href="" style={{ color: "black" }}>
+                        {`.${
+                          sellerProduct ? sellerProduct.length : 0
+                        } items for sell`}
+                      </Link>
+                    </div>
+                    <div
                       style={{
-                        fontSize: "12px",
+                        margin: "10px 0px",
+                        fontSize: "14px",
                         display: "flex",
                         alignItems: "center",
+                        gap: "6px",
                       }}
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        width={20}
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-                        />
-                      </svg>
-                      quick reply
-                    </span>
-                  </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width={20}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                          />
+                        </svg>
+                        FAST SHIPPER
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width={20}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+                          />
+                        </svg>
+                        quick reply
+                      </span>
+                    </div>
 
-                  <button className={styles.followbtn}>Follow</button>
-                </div>
-              </Link>
-            ):(
-              <Link
-              style={{
-                textDecoration: "none",
-                color: "black",
-                display: "flex",
-              }}
-              href={`/profile/designer/${product.userId}`}
-            >
-              {!userData ? (
-                <img
-                  width={40}
-                  height={40}
-                  src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
-                  alt=""
-                />
+                    <button className={styles.followbtn}>Follow</button>
+                  </div>
+                </Link>
               ) : (
-                <>
-                  <img
-                    width={40}
-                    height={40}
-                    style={{ borderRadius: "50%" }}
-                    src={userData.profileImage}
-                    alt=""
-                  />
-                </>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: "flex",
+                  }}
+                  href={`/profile/designer/${product.userId}`}
+                >
+                  {!userData ? (
+                    <img
+                      width={40}
+                      height={40}
+                      src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
+                      alt=""
+                    />
+                  ) : (
+                    <>
+                      <img
+                        width={40}
+                        height={40}
+                        style={{ borderRadius: "50%" }}
+                        src={userData.profileImage}
+                        alt=""
+                      />
+                    </>
+                  )}
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        color: "black",
+                      }}
+                    >
+                      {product.userName}
+                    </div>
+                    <span
+                      style={{
+                        margin: "5px 0px",
+                        color: "black",
+                        display: "flex",
+                        fontSize: "12px",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={2.5}
+                        precision={0.5}
+                        readOnly
+                        style={{ color: "green", fontSize: "13px" }}
+                      />
+                      <p>{" 3reivews"}</p>
+                    </span>
+                    <div style={{ margin: "10px 0px", fontSize: "14px" }}>
+                      {`${userData.transaction}  Transactions`}
+                      <Link href="" style={{ color: "black" }}>
+                        {`.${
+                          sellerProduct ? sellerProduct.length : 0
+                        } items for sell`}
+                      </Link>
+                    </div>
+                    <div
+                      style={{
+                        margin: "10px 0px",
+                        fontSize: "14px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width={20}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                          />
+                        </svg>
+                        FAST SHIPPER
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width={20}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+                          />
+                        </svg>
+                        quick reply
+                      </span>
+                    </div>
+
+                    <button className={styles.followbtn}>Follow</button>
+                  </div>
+                </Link>
               )}
-              <div>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: "500",
-                    color: "black",
-                  }}
-                >
-                  {product.userName}
-                </div>
-                <span
-                  style={{
-                    margin: "5px 0px",
-                    color: "black",
-                    display: "flex",
-                    fontSize: "12px",
-                    alignItems: "center",
-                  }}
-                >
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={2.5}
-                    precision={0.5}
-                    readOnly
-                    style={{ color: "green", fontSize: "13px" }}
-                  />
-                  <p>{" 3reivews"}</p>
-                </span>
-                <div style={{ margin: "10px 0px", fontSize: "14px" }}>
-                  {`${userData.transaction}  Transactions`}
-                  <Link href="" style={{ color: "black" }}>
-                    {`.${
-                      sellerProduct ? sellerProduct.length : 0
-                    } items for sell`}
-                  </Link>
-                </div>
-                <div
-                  style={{
-                    margin: "10px 0px",
-                    fontSize: "14px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      width={20}
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
-                      />
-                    </svg>
-                    FAST SHIPPER
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      width={20}
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-                      />
-                    </svg>
-                    quick reply
-                  </span>
-                </div>
-
-                <button className={styles.followbtn}>Follow</button>
-              </div>
-            </Link>
-            )
-
-            }
 
               <div className={styles.feedFlex}>
                 <h4>{"Seller FeedBack"}</h4>
@@ -744,178 +743,178 @@ function ProductDetail({ productId }) {
                 className={styles.swiper}
               >
                 {!user ? (
-                <>
-                <SwiperSlide className={styles.swiperslide}>
-                  <Link
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      fontSize: "14px",
-                    }}
-                    href={`/profile/designer/${product.userId}`}
-                  >
-                    <div>
-                      <div
+                  <>
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
                         style={{
-                          fontSize: "14px",
-                          fontWeight: "600",
+                          textDecoration: "none",
                           color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
                         }}
+                        href={`/profile/designer/${product.userId}`}
                       >
-                        March 7 2024
-                      </div>
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
 
-                      <span style={{ margin: "10px 0px", color: "black" }}>
-                        <Rating
-                          name="half-rating-read"
-                          defaultValue={5}
-                          precision={4}
-                          style={{ color: "darkgreen", fontSize: "16px" }}
-                          readOnly
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
                         />
-                      </span>
-                      <div style={{ margin: "10px 0px", color: "black" }}>
-                        <span>{" very nice product "}</span>
-                      </div>
-                      <div>
-                        <Link
-                          href=""
-                          style={{ margin: "10px 0px", color: "black" }}
-                        >
-                          {product.designers}
-                        </Link>
-                        <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double
-                          Swoosh
-                        </p>
-                      </div>
-                    </div>
-                    <img
-                      width={100}
-                      height={100}
-                      src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
-                      alt=""
-                    />
-                  </Link>
-                </SwiperSlide>
-                <SwiperSlide className={styles.swiperslide}>
-                  <Link
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      fontSize: "14px",
-                    }}
-                    href={`/profile/designer/${product.userId}`}
-                  >
-                    <div>
-                      <div
+                      </Link>
+                    </SwiperSlide>
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
                         style={{
-                          fontSize: "14px",
-                          fontWeight: "600",
+                          textDecoration: "none",
                           color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
                         }}
+                        href={`/profile/designer/${product.userId}`}
                       >
-                        March 7 2024
-                      </div>
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
 
-                      <span style={{ margin: "10px 0px", color: "black" }}>
-                        <Rating
-                          name="half-rating-read"
-                          defaultValue={5}
-                          precision={4}
-                          style={{ color: "darkgreen", fontSize: "16px" }}
-                          readOnly
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
                         />
-                      </span>
-                      <div style={{ margin: "10px 0px", color: "black" }}>
-                        <span>{" very nice product "}</span>
-                      </div>
-                      <div>
-                        <Link
-                          href=""
-                          style={{ margin: "10px 0px", color: "black" }}
-                        >
-                          {product.designers}
-                        </Link>
-                        <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double
-                          Swoosh
-                        </p>
-                      </div>
-                    </div>
-                    <img
-                      width={100}
-                      height={100}
-                      src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
-                      alt=""
-                    />
-                  </Link>
-                </SwiperSlide>
+                      </Link>
+                    </SwiperSlide>
 
-                <SwiperSlide className={styles.swiperslide}>
-                  <Link
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      fontSize: "14px",
-                    }}
-                    href={``}
-                    onClick={handleOpen4}
-                  >
-                    <div>
-                      <div
+                    <SwiperSlide className={styles.swiperslide}>
+                      <Link
                         style={{
-                          fontSize: "14px",
-                          fontWeight: "600",
+                          textDecoration: "none",
                           color: "black",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "14px",
                         }}
+                        href={``}
+                        onClick={handleOpen4}
                       >
-                        March 7 2024
-                      </div>
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              fontWeight: "600",
+                              color: "black",
+                            }}
+                          >
+                            March 7 2024
+                          </div>
 
-                      <span style={{ margin: "10px 0px", color: "black" }}>
-                        <Rating
-                          name="half-rating-read"
-                          defaultValue={5}
-                          precision={4}
-                          style={{ color: "darkgreen", fontSize: "16px" }}
-                          readOnly
+                          <span style={{ margin: "10px 0px", color: "black" }}>
+                            <Rating
+                              name="half-rating-read"
+                              defaultValue={5}
+                              precision={4}
+                              style={{ color: "darkgreen", fontSize: "16px" }}
+                              readOnly
+                            />
+                          </span>
+                          <div style={{ margin: "10px 0px", color: "black" }}>
+                            <span>{" very nice product "}</span>
+                          </div>
+                          <div>
+                            <Link
+                              href=""
+                              style={{ margin: "10px 0px", color: "black" }}
+                            >
+                              {product.designers}
+                            </Link>
+                            <p style={{ margin: "10px 0px" }}>
+                              Nike Vintage Y2K Nylon Baggy Track Pants Double
+                              Swoosh
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          width={100}
+                          height={100}
+                          src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
+                          alt=""
                         />
-                      </span>
-                      <div style={{ margin: "10px 0px", color: "black" }}>
-                        <span>{" very nice product "}</span>
-                      </div>
-                      <div>
-                        <Link
-                          href=""
-                          style={{ margin: "10px 0px", color: "black" }}
-                        >
-                          {product.designers}
-                        </Link>
-                        <p style={{ margin: "10px 0px" }}>
-                          Nike Vintage Y2K Nylon Baggy Track Pants Double
-                          Swoosh
-                        </p>
-                      </div>
-                    </div>
-                    <img
-                      width={100}
-                      height={100}
-                      src="https://media-assets.grailed.com/prd/listing/temp/542cf3edad86493a9600e874434abe0c?w=120&fit=clip&q=40&auto=format"
-                      alt=""
-                    />
-                  </Link>
-                </SwiperSlide>
-              </>
+                      </Link>
+                    </SwiperSlide>
+                  </>
                 ) : (
                   <>
                     <SwiperSlide className={styles.swiperslide}>
