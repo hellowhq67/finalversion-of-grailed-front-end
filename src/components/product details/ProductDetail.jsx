@@ -72,6 +72,7 @@ function ProductDetail({ productId }) {
   const { user, getAllUsersData } = UseAuth();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+    const [selectedShipping, setSelectedShipping] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -151,6 +152,9 @@ function ProductDetail({ productId }) {
             })
           );
         }
+ const handleShippingChange = (event) => {
+    setSelectedShipping(event.target.value);
+  };
 
         const fetchData = async () => {
           const allProducts = await fetchProducts();
@@ -424,13 +428,17 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-              <span>
-                Shipping — Europe to {product.shippings}{" "}
-                <select name="" id="">
-                  <option value="">Asia</option>
-                  <option value="">europe </option>
-                  <option value="">canda</option>
-                </select>{" "}
+         <select
+                style={{borderBottom:"1px solid #000000",background:"none",}}
+                  name="shipping"
+                  id="shipping"
+                  onChange={handleShippingChange}
+                >
+                  <option value="">Select </option>
+                  <option value="Asia">Asia</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Canada">Canada</option>
+                </select>
               </span>
 
             {!user?
