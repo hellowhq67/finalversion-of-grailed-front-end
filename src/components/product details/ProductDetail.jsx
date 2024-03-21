@@ -428,7 +428,9 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-         <select
+        <span>
+                Shipping — {selectedShipping } {product.shippings }
+                <select
                 style={{borderBottom:"1px solid #000000",background:"none",}}
                   name="shipping"
                   id="shipping"
