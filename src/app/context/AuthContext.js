@@ -1,8 +1,8 @@
 'use client'
 import { useContext, createContext, useState, useEffect } from "react";
-import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider } from 'firebase/auth';
+import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider,createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { collection, doc, setDoc, getDocs, updateDoc, getDoc, Timestamp } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs,  Timestamp } from "firebase/firestore";
 
 
 const AuthContext = createContext();
@@ -118,22 +118,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
   // for the developer 
-  const ActivePayementMetod = async () => {
-    try {
-      // Update user's data in Firestore
-      if (auth.currentUser) {
-        const userRef = doc(db, "users", auth.currentUser.uid);
-        const userData = {
-
-          //add payment Provider paypa stri
-
-        };
-        await setDoc(userRef, userData, { merge: true });
-      }
-    } catch (error) {
-      console.error("Error updating profile:", error.message);
-    }
-  };
+ 
   // for the developer  after add pyament method work with the feedback section remove the dummy data form it
   const FeebackFunction = async (sellerID, date, description, bacth, productName, customerId, customerDisplayName, desinger, productimgae) => {
     try {
@@ -165,6 +150,24 @@ export const AuthContextProvider = ({ children }) => {
       console.error("Error updating profile:", error.message);
     }
   };
+
+
+
+  const createAccountWithEmail = async (email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const { user } = userCredential;
+      setUser(user);
+      // You can add additional actions after successful account creation, such as updating user profile.
+    } catch (error) {
+      console.error("Error creating account:", error.message);
+    }
+  };
+
+
+
+
+  
   const getAllUsersData = async () => {
     try {
       const usersCollectionRef = collection(db, "users");
@@ -249,7 +252,7 @@ export const AuthContextProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ user, googleSignIn,  facebookSignIn, appleSignIn, logOut, updateProfile, PaymentUpdate, AddressDetails, bussinessInfo, getAllUsersData, }}>
+    <AuthContext.Provider value={{ user, googleSignIn,  facebookSignIn, appleSignIn, logOut, updateProfile, PaymentUpdate, AddressDetails, bussinessInfo, getAllUsersData,createAccountWithEmail }}>
       {children}
     </AuthContext.Provider>
   );
