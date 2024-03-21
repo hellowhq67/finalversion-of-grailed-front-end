@@ -18,7 +18,9 @@
 .checkbox input {
   margin: 10px 0px;
 }
-
+.btn svg{
+  color: #000000;
+}
 .ProductSildes {
   display: flex;
   flex-direction: column;
