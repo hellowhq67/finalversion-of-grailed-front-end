@@ -21,7 +21,7 @@ export default function Slider() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://adminpanellive.vercel.app/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       // Filter products where userName is "STAFPRODUCTS"
       const filteredProducts = response.data.products.filter(product => product.userName === 'STAFPRODUCTS');
       setProducts(filteredProducts);
@@ -36,7 +36,7 @@ export default function Slider() {
   return (
     <div className={style.SliderCol}>
       <div className={style.wrapper}>
-    <div className={style.flex}><h2>Staff Picks</h2> <Link href='/products/staf'>SEE ALL</Link></div>
+    <div className={style.flex}><h2>Staff Picks</h2> <Link style={{textDecoration:"none"}} href='/products/staf'>{`SEE ALL->`}</Link></div>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
