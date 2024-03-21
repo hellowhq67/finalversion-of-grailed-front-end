@@ -6,7 +6,7 @@ import Mensweare from "@/components/Sections/Mensweare/Mensweare";
 import Card from "@/components/Sections/FeaturedCollection/Card";
 import React from "react";
 import Womensweare from "@/components/Sections/Womenswere/Womenswere";
-import Designers from "@/components/Sections/PopulerDesigner/Designers";
+import Designer from '@/components/Designer/Designers'
 import Slider from "@/components/Sections/Slider/Slider";
 import Footer from "@/components/Navigations/Footer";
 import Modal from "@/components/authModal/Modals";
