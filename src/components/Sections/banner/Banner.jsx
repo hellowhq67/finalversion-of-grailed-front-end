@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Banner.module.css";
+import Link from "next/link";
 export default function Banner() {
   return (
     <div className={styles.hero}>
@@ -18,10 +19,12 @@ export default function Banner() {
         </h4>
         <div>
           <button className={`${styles.btn} ${styles.btn1}`}>
-            SHOP MENSWEAR
+           <Link  href={'/products/cetagory/menswear/top'}>SHOP MENSWEAR</Link>
           </button>
           <button className={`${styles.btn} ${styles.btn2}`}>
-            SHOP WOMENSWEAR
+        
+           <Link  href={'/products/cetagory/womenswear/top'}>SHOP MENSWEAR</Link>
+
           </button>
         </div>
       </div>
