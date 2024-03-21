@@ -32,7 +32,7 @@ export default function page() {
         <Card />
         <Mensweare />
         <Womensweare />
-        <Designers />
+        <Designer />
         <Slider />
       </div>
       <Banner2 />
