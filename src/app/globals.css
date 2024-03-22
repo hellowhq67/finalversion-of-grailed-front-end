@@ -19,3 +19,6 @@ hr {
   margin: 10px 0; /* Margin above and below the line */
 }
 
+svg{
+  color: #000000;
+}
