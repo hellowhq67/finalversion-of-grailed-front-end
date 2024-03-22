@@ -11,7 +11,7 @@ export default function page() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/blog");
+        const response = await fetch("https://adminpanellive.vercel.app/api/blog");
         if (response.ok) {
           const data = await response.json();
           setBlogs(data.Blogs);
