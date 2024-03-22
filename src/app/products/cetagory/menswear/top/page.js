@@ -11,7 +11,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Footer from '@/components/Navigations/Footer'
 import Slider from '@/components/Sections/Slider/Slider'
-
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 export default function page() {
 
 
@@ -48,9 +48,10 @@ export default function page() {
       collectionName: "Polos",
       path: "",
     },
-  ]; 
+  ];
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
+  const [sortOption, setSortOption] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen); // Step 2
@@ -60,7 +61,7 @@ export default function page() {
   }, []);
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://adminpanellive.vercel.app/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total/');
       // Filter products with category "TOPS" and department "MENSWEAR"
       const filteredProducts = response.data.products.filter(product => product.category === "TOPS" && product.department === "MENSWEAR");
       setProducts(filteredProducts);
@@ -68,22 +69,20 @@ export default function page() {
       console.error('Error fetching products:', error);
     }
   };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFilters({ ...filters, [name]: value });
-  };
+
   // Function to handle checkbox change and update filters
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
   const handleSortChange = (event) => {
-    const value = event.target.value;
-    if (value === 'lowPrice') {
+    const option = event.target.value;
+    setSortOption(option);
+    if (option === 'lowPrice') {
       setProducts([...products.sort((a, b) => a.price - b.price)]);
-    } else if (value === 'highPrice') {
+    } else if (option === 'highPrice') {
       setProducts([...products.sort((a, b) => b.price - a.price)]);
-    } else if (value === 'new') {
+    } else if (option === 'new') {
       setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
     } else {
       // Default sorting or any other sorting logic
@@ -134,34 +133,34 @@ export default function page() {
       <div style={{ marginTop: '4rem ', border: '1px solid black', width: "100vw" }}>
         <NestedMenu />
       </div>
-<div className={style.hearContent}>
-<div className={style.collectionCon} >
-    <div className={style.collectionCol}>
-        <div>
-        <h2 >{'Men  Tops'}</h2>
-        </div>
-        
+      <div className={style.hearContent}>
+        <div className={style.collectionCon} >
+          <div className={style.collectionCol}>
+            <div>
+              <h2 >{'Men  Tops'}</h2>
+            </div>
 
-        <div className={style.collectionWrapper}>
-          {datas.map((x)=>{
-            return(
-              <>
-              <div>
-                <img src={x.img} alt="" />
-                <p>{x.collectionName}</p>
-              </div>
-              
-              </>
-            )
-          })
 
-          }
+            <div className={style.collectionWrapper}>
+              {datas.map((x) => {
+                return (
+                  <>
+                    <div>
+                      <img src={x.img} alt="" />
+                      <p>{x.collectionName}</p>
+                    </div>
+
+                  </>
+                )
+              })
+
+              }
+            </div>
+          </div>
+
         </div>
+        <Slider />
       </div>
-
-    </div>
-    <Slider/>
-</div>
       <div className={style.fiterButton} onClick={toggleSidebar}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={30}>
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
@@ -172,13 +171,21 @@ export default function page() {
         <span style={{ fontWeight: "bold" }}>{products.length} listings</span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
-          <select className={style.selectFliter} onChange={handleSortChange}>
-            <option value="">Sort By: Default</option>
-            <option value="trending">Sort By: Trending</option>
-            <option value="lowPrice">Sort By: Low Price</option>
-            <option value="highPrice">Sort By: High Price</option>
-            <option value="new">Sort By: New</option>
-          </select>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="demo-select-small-label">Sort By</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={sortOption}
+              onChange={handleSortChange}
+              label="Sort by"
+
+            >
+              <MenuItem value="lowPrice">Low Price</MenuItem>
+              <MenuItem value="highPrice">High Price</MenuItem>
+              <MenuItem value="new">New</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
       <div className={style.wrapper}>
@@ -528,9 +535,9 @@ export default function page() {
                 <Link style={{ textDecoration: "none", cursor: "pointer", color: "black" }} href={`/listlings/${x._id}`} passHref>
                   <div className={style.imgCol}>
                     <img src={x.productImage1} alt="" />
-                    {!x.vendor?"":<span className={style.tags}>{x.vendor}</span>}
+                    {!x.vendor ? "" : <span className={style.tags}>{x.vendor}</span>}
                   </div>
-                  <p> about 1 hour <span style={{textDecoration:"line-through"}}>{'(23 days)'}</span></p>
+                  <p> about 1 hour <span style={{ textDecoration: "line-through" }}>{'(23 days)'}</span></p>
                   <hr />
                   <div className={style.descCol}>
                     <p className={style.title}>
@@ -541,7 +548,7 @@ export default function page() {
                 </Link>
                 <div className={style.priceCol}>
                   <p className={style.price}>
-                    <span style={{ color: "red", margin: "0px 2px" }}> ${x.floorPrice?x.floorPrice:""}</span>
+                    <span style={{ color: "red", margin: "0px 2px" }}> ${x.floorPrice ? x.floorPrice : ""}</span>
                     <span className={style.floorPrice}>
                       ${x.price}
                     </span>
