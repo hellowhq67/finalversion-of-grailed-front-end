@@ -126,54 +126,48 @@ function ProductDetail({ productId }) {
     fetchProduct();
   }, [productId]);
   const sellerID = product ? product.userId : "";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true); // Set loading to true before fetching data
-
+  
+        // Fetch user data
         const usersData = await getAllUsersData();
-        const users = usersData.find((user) => user.userid === sellerID);
-
-        if (users) {
-          setUserData({
-            reting: users.reting || "",
-            transaction: users.feedbacks.length || "",
-            profileImage: users.profileimgae || "",
-            feedbacks: users.feedbacks.length || "",
-            feedbacksdata: [users.feedbacks] || "",
-          });
-          localStorage.setItem(
-            "userData",
-            JSON.stringify({
-              userBio: user.bio || "",
-              reting: users.reting || "",
-              transaction: users.feedbacks.length || "",
-              profileImage: users.profileimgae || "",
-              feedbacks: users.feedbacks.length || "",
-              feedbacksdata: [users.feedbacks] || "",
-            })
-          );
+        const user = usersData.find((user) => user.userid === sellerID);
+  
+        // If user data is found, set user data state and localStorage
+        if (user) {
+          const userData = {
+            userBio: user.bio || "",
+            reting: user.reting || "",
+            transaction: user.feedbacks.length || "",
+            profileImage: user.profileimgae || "",
+            feedbacks: user.feedbacks.length || "",
+            feedbacksdata: [user.feedbacks] || "",
+          };
+          setUserData(userData);
+          localStorage.setItem("userData", JSON.stringify(userData));
         }
-
-        const fetchData = async () => {
-          const allProducts = await fetchProducts();
-          const filteredProducts = allProducts.filter(
-            (product) => product.userId === sellerID
-          );
-
-          setSellerproduct(filteredProducts);
-          setLoading(false);
-        };
-
-        fetchData();
+  
+        // Fetch products for the seller
+        const allProducts = await fetchProducts();
+        const sellerProducts = allProducts.filter(
+          (product) => product.userId === sellerID
+        );
+        setSellerproduct(sellerProducts);
+  
         setLoading(false); // Set loading to false after fetching data
       } catch (error) {
         console.error("Error fetching user data:", error);
         setLoading(false);
       }
     };
-
-    fetchData();
+  
+    // Fetch data when sellerID or getAllUsersData changes
+    if (sellerID) {
+      fetchData();
+    }
   }, [getAllUsersData, sellerID]);
 
   if (loading) {
