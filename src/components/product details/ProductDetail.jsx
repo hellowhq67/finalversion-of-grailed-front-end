@@ -476,132 +476,7 @@ function ProductDetail({ productId }) {
               </button>
 
               <hr />
-              {!user ? (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    display: "flex",
-                  }}
-                  onClick={handleOpen4}
-                  href={``}
-                >
-                  {!userData ? (
-                    <img
-                      width={40}
-                      height={40}
-                      src="https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
-                      alt=""
-                    />
-                  ) : (
-                    <>
-                      <img
-                        width={40}
-                        height={40}
-                        style={{ borderRadius: "50%" }}
-                        src={userData.profileImage}
-                        alt=""
-                      />
-                    </>
-                  )}
-                  <div>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: "500",
-                        color: "black",
-                      }}
-                    >
-                      {product.userName}
-                    </div>
-                    <span
-                      style={{
-                        margin: "5px 0px",
-                        color: "black",
-                        display: "flex",
-                        fontSize: "12px",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Rating
-                        name="half-rating-read"
-                        defaultValue={2.5}
-                        precision={0.5}
-                        readOnly
-                        style={{ color: "green", fontSize: "13px" }}
-                      />
-                      <p>{" 3reivews"}</p>
-                    </span>
-                    <div style={{ margin: "10px 0px", fontSize: "14px" }}>
-                      {`${userData.transaction}  Transactions`}
-                      <Link href="" style={{ color: "black" }}>
-                        {`.${
-                          sellerProduct ? sellerProduct.length : 0
-                        } items for sell`}
-                      </Link>
-                    </div>
-                    <div
-                      style={{
-                        margin: "10px 0px",
-                        fontSize: "14px",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          width={20}
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
-                          />
-                        </svg>
-                        FAST SHIPPER
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          width={20}
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-                          />
-                        </svg>
-                        quick reply
-                      </span>
-                    </div>
-
-                    <button className={styles.followbtn}>Follow</button>
-                  </div>
-                </Link>
-              ) : (
-                <Link
+              <Link
                   style={{
                     textDecoration: "none",
                     color: "black",
@@ -723,8 +598,6 @@ function ProductDetail({ productId }) {
                     <button className={styles.followbtn}>Follow</button>
                   </div>
                 </Link>
-              )}
-
               <div className={styles.feedFlex}>
                 <h4>{"Seller FeedBack"}</h4>
                 <Link
