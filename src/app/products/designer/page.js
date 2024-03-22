@@ -30,7 +30,7 @@ export default function page() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/products/total');
+      const response = await axios.get('http://localhost:3001/api/products');
       setProducts(response.data.products);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -45,8 +45,6 @@ export default function page() {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
-  const [sortOption, setSortOption] = useState('');
-
   const handleSortChange = (event) => {
     const option = event.target.value;
     setSortOption(option);
@@ -60,7 +58,6 @@ export default function page() {
       // Default sorting or any other sorting logic
     }
   };
-
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
     // Check if product matches all selected filters
