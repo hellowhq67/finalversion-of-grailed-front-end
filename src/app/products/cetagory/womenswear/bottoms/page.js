@@ -12,7 +12,7 @@ import axios from 'axios';
 import Footer from '@/components/Navigations/Footer'
 import Slider from '@/components/Sections/Slider/Slider'
 import Womensweare from '@/components/Sections/Womenswere/Womenswere'
-
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 export default function page() {
 
 
@@ -52,7 +52,8 @@ export default function page() {
   ]; 
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sortOption, setSortOption] = useState(''); // Step 1
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen); // Step 2
   };
@@ -79,17 +80,19 @@ export default function page() {
     setFilters({ ...filters, [name]: checked });
   };
   const handleSortChange = (event) => {
-    const value = event.target.value;
-    if (value === 'lowPrice') {
+    const option = event.target.value;
+    setSortOption(option);
+    if (option === 'lowPrice') {
       setProducts([...products.sort((a, b) => a.price - b.price)]);
-    } else if (value === 'highPrice') {
+    } else if (option === 'highPrice') {
       setProducts([...products.sort((a, b) => b.price - a.price)]);
-    } else if (value === 'new') {
+    } else if (option === 'new') {
       setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
     } else {
       // Default sorting or any other sorting logic
     }
   };
+
 
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
@@ -147,13 +150,21 @@ export default function page() {
         <span style={{ fontWeight: "bold" }}>{products.length} listings <span>{`womenswear>bottoms`}</span></span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
-          <select className={style.selectFliter} onChange={handleSortChange}>
-            <option value="">Sort By: Default</option>
-            <option value="trending">Sort By: Trending</option>
-            <option value="lowPrice">Sort By: Low Price</option>
-            <option value="highPrice">Sort By: High Price</option>
-            <option value="new">Sort By: New</option>
-          </select>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small-label">Sort By</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={sortOption}
+              onChange={handleSortChange}
+              label="Sort by"
+
+            >
+              <MenuItem value="lowPrice">Low Price</MenuItem>
+              <MenuItem value="highPrice">High Price</MenuItem>
+              <MenuItem value="new">New</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
       <div className={style.wrapper}>
