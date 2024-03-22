@@ -77,7 +77,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
             <Link href={"/favorites/"}>FAVORITES</Link>
             <Link href={"/purchases"}>PURCHASES</Link>
             {!user ? "" : <Link href={`/sell/${user&&user.uid}`}>Sell</Link>}
-            <Link href={`/sell/${user&&user.uid}`}>FOR SALE</Link>
+            
             <Link href={`/profile/${user&&user.uid}`}>MY ACCOUNT</Link>
             <Link onClick={handelLogout} href="">
               SIGN OUT
