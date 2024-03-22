@@ -9,6 +9,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Link from "next/link";
 import axios from "axios";
 import Footer from "@/components/Navigations/Footer";
@@ -27,6 +28,7 @@ export default function Public({ sellerID }) {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sortOption, setSortOption] = useState('');
   const [activeTab, setActiveTab] = useState("listings"); // State to track active tab
   const [userData, setUserData] = useState({
     location: "",
@@ -130,22 +132,20 @@ export default function Public({ sellerID }) {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
-  const handleSortChange = (event) => {
-    const value = event.target.value;
-    if (value === "lowPrice") {
+ const handleSortChange = (event) => {
+    const option = event.target.value;
+    setSortOption(option);
+    if (option === 'lowPrice') {
       setProducts([...products.sort((a, b) => a.price - b.price)]);
-    } else if (value === "highPrice") {
+    } else if (option === 'highPrice') {
       setProducts([...products.sort((a, b) => b.price - a.price)]);
-    } else if (value === "new") {
-      setProducts([
-        ...products.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        ),
-      ]);
+    } else if (option === 'new') {
+      setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
     } else {
       // Default sorting or any other sorting logic
     }
   };
+
 
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
@@ -338,16 +338,23 @@ export default function Public({ sellerID }) {
                     >
                       filter
                     </button>
-                    <select
-                      className={style.selectFliter}
-                      onChange={handleSortChange}
-                    >
-                      <option value="">Sort By: Default</option>
-                      <option value="trending">Sort By: Trending</option>
-                      <option value="lowPrice">Sort By: Low Price</option>
-                      <option value="highPrice">Sort By: High Price</option>
-                      <option value="new">Sort By: New</option>
-                    </select>
+ <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small-label">Sort By</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={sortOption}
+              onChange={handleSortChange}
+              label="Sort by"
+
+
+            >
+              <MenuItem value="lowPrice">Low Price</MenuItem>
+              <MenuItem value="highPrice">High Price</MenuItem>
+              <MenuItem value="new">New</MenuItem>
+            </Select>
+          </FormControl>
+
                   </div>
                 </div>
                 <div className={style.wrapper}>
