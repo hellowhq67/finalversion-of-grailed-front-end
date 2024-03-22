@@ -434,19 +434,23 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-              <span>
-                Shipping — {selectedShipping } {product.shippings }
-                <select
-                style={{borderBottom:"1px solid #000000",background:"none",}}
-                  name="shipping"
-                  id="shipping"
-                  onChange={handleShippingChange}
-                >
-                  <option value="">Select </option>
-                  <option value="Asia">Asia</option>
-                  <option value="Europe">Europe</option>
-                  <option value="Canada">Canada</option>
-                </select>
+  <span style={{display:"flex",alignItems:"center"}}>
+              <p>  Shipping — {selectedShipping} {product.shippings}</p>
+                <FormControl variant="standard" sx={{ m: 1 }}>
+                  <Select
+                    labelId="shipping-label"
+                    id="shipping"
+                    value={selectedShipping}
+                    onChange={handleShippingChange}
+                    label="Shipping"
+                    sx={{ fontSize: "14px" }}
+                  >
+                    <MenuItem value="">Select</MenuItem>
+                    <MenuItem value="Asia">Asia</MenuItem>
+                    <MenuItem value="Europe">Europe</MenuItem>
+                    <MenuItem value="Canada">Canada</MenuItem>
+                  </Select>
+                </FormControl>
               </span>
 
               {!user ? (
