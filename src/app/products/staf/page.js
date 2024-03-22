@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Link from 'next/link';
 import axios from 'axios';
 import Footer from '@/components/Navigations/Footer'
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 export default function page() {
 
@@ -46,18 +47,7 @@ export default function page() {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
-  const handleSortChange = (event) => {
-    const value = event.target.value;
-    if (value === 'lowPrice') {
-      setProducts([...products.sort((a, b) => a.price - b.price)]);
-    } else if (value === 'highPrice') {
-      setProducts([...products.sort((a, b) => b.price - a.price)]);
-    } else if (value === 'new') {
-      setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
-    } else {
-      // Default sorting or any other sorting logic
-    }
-  };
+
 
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
@@ -115,13 +105,22 @@ export default function page() {
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
-          <select className={style.selectFliter} onChange={handleSortChange}>
-            <option value="">Sort By: Default</option>
-            <option value="trending">Sort By: Trending</option>
-            <option value="lowPrice">Sort By: Low Price</option>
-            <option value="highPrice">Sort By: High Price</option>
-            <option value="new">Sort By: New</option>
-          </select>
+       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small-label">Sort By</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={sortOption}
+              onChange={handleSortChange}
+              label="Sort by"
+
+
+            >
+              <MenuItem value="lowPrice">Low Price</MenuItem>
+              <MenuItem value="highPrice">High Price</MenuItem>
+              <MenuItem value="new">New</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
       <div className={style.wrapper}>
