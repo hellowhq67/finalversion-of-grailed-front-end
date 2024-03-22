@@ -32,7 +32,7 @@ export default function page() {
   }, []);
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://adminpanellive.vercel.app/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       // Filter products with category "TOPS" and department "MENSWEAR"
       const filteredProducts = response.data.products.filter(product => product.category === "ACCESSORIES" && product.department === "MENSWEAR");
       setProducts(filteredProducts);
