@@ -152,8 +152,8 @@ function Sidebar({ toggleSidebar, isOpen }) {
         </AccordionDetails>
       </Accordion>
       <div className={style.otherLinks}>
-        <Link href="">Designer</Link>
-        <Link href="">Sneakers</Link>
+       <Link href="/products/designer">Designer</Link>
+        <Link href="/products/cetagory/menswear/footwear">Sneakers</Link>
 
         <Link href="/products">Shop</Link>
         <Link href="/products">collections</Link>
