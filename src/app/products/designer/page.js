@@ -13,7 +13,6 @@ import Footer from '@/components/Navigations/Footer'
 import Designer from '@/components/Designer/Designers'
 import Page from '@/components/Sections/article/Page'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
 export default function page() {
 
 
@@ -31,7 +30,7 @@ export default function page() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://adminpanellive.vercel.app/api/products');
+      const response = await axios.get('http://localhost:3001/api/products/total');
       setProducts(response.data.products);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -46,9 +45,6 @@ export default function page() {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
-
-
-
   const handleSortChange = (event) => {
     const option = event.target.value;
     setSortOption(option);
@@ -62,15 +58,6 @@ export default function page() {
       // Default sorting or any other sorting logic
     }
   };
-
-
-
-
-
-
-
-
-
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
     // Check if product matches all selected filters
@@ -127,7 +114,7 @@ export default function page() {
         <span style={{ fontWeight: "bold" }}>{products.length} listings</span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">Sort By</InputLabel>
             <Select
               labelId="demo-select-small-label"
@@ -135,7 +122,6 @@ export default function page() {
               value={sortOption}
               onChange={handleSortChange}
               label="Sort by"
-
 
             >
               <MenuItem value="lowPrice">Low Price</MenuItem>
