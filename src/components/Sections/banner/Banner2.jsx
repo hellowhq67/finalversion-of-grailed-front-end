@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Banner.module.css";
+import Link from "next/link";
 export default function Banner2() {
   return (
     <div>
@@ -24,7 +25,7 @@ export default function Banner2() {
             margin: "20px",
           }}
         >
-          Shop all
+          <Link style={{textDecoration:"none",color:"#ffff"}} href={`/products`}>Shop all</Link>
         </button>
       </div>
     </div>
