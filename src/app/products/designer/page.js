@@ -17,7 +17,7 @@ export default function page() {
 
 
 
-
+  const [sortOption, setSortOption] = useState('');
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
