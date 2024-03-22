@@ -18,6 +18,9 @@
   width: 15rem;
   height: 16rem;
 }
+.btn svg{
+  color: #000000;
+}
 .tags {
   position: absolute;
   top: 4%;
