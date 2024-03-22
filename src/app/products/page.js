@@ -10,22 +10,20 @@ import Typography from "@mui/material/Typography";
 import Link from 'next/link';
 import Footer from '@/components/Navigations/Footer'
 import Pagination from '@mui/material/Pagination';
-import axios from 'axios'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
+import axios from 'axios'
 export default function page() {
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen); // Step 2
   };
-
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
-  const [totalpro,settotalpro]=useState('')
+  const [totalpro, settotalpro] = useState('')
   const fetchProducts = async (pageNum) => {
     setIsFetching(true);
     try {
@@ -45,44 +43,7 @@ export default function page() {
     setIsFetching(false);
   };
 
-
-  const handlePagination = (event, pageNum) => {
-    fetchProducts(pageNum);
-  };
-
-  useEffect(() => {
-    const fetchTotalProducts = async () => {
-      try {
-        const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
-      
-        const totalProducts =response.data.products.length;
-         settotalpro(totalProducts)
-
-        const itemsPerPage = 6; // Replace with your limit per page
-        const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
-        setTotalPages(totalPagesCount);
-        console.log(totalProducts)
-        // Fetch products for the initial page
-        fetchProducts(page);
-      } catch (error) {
-        console.error('Error fetching total products:', error);
-      }
-    }; 
-    
-    fetchTotalProducts();
-  }, []);
-
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFilters({ ...filters, [name]: value });
-  };
-  // Function to handle checkbox change and update filters
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setFilters({ ...filters, [name]: checked });
-  };
-
+  const [sortOption, setSortOption] = useState('');
 
   const handleSortChange = (event) => {
     const option = event.target.value;
@@ -100,6 +61,41 @@ export default function page() {
 
 
 
+  const handlePagination = (event, pageNum) => {
+    fetchProducts(pageNum);
+  };
+
+  useEffect(() => {
+    const fetchTotalProducts = async () => {
+      try {
+        const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
+
+        const totalProducts = response.data.products.length;
+        settotalpro(totalProducts)
+
+        const itemsPerPage = 6; // Replace with your limit per page
+        const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
+        setTotalPages(totalPagesCount);
+        // Fetch products for the initial page
+        fetchProducts(page);
+      } catch (error) {
+        console.error('Error fetching total products:', error);
+      }
+    };
+
+    fetchTotalProducts();
+  }, []);
+
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFilters({ ...filters, [name]: value });
+  };
+  // Function to handle checkbox change and update filters
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setFilters({ ...filters, [name]: checked });
+  };
 
   // Function to filter products based on selected filters
   const filterProducts = (product) => {
@@ -155,8 +151,7 @@ export default function page() {
         <span style={{ fontWeight: "bold" }}>{totalpro} listings</span>
         <div style={{ display: "flex", alignItems: "center" }}>
           <button style={{ background: "black", color: "white", border: "none", padding: "10px 25px", fontWeight: "bold" }}>Follow</button>
-
-<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">Sort By</InputLabel>
             <Select
               labelId="demo-select-small-label"
@@ -164,7 +159,6 @@ export default function page() {
               value={sortOption}
               onChange={handleSortChange}
               label="Sort by"
-
 
             >
               <MenuItem value="lowPrice">Low Price</MenuItem>
@@ -514,7 +508,9 @@ export default function page() {
 
 
 
-      
+
+
+
         <div className={style.ProCol}>
           <div className={style.productWrapprer}>
 
@@ -570,16 +566,13 @@ export default function page() {
 
           </div>
           <Pagination
-          style={{margin:"20px"}}
+            style={{ margin: "20px" }}
             count={totalPages}
             shape="rounded"
             page={page}
             onChange={handlePagination}
-          />
+          ></Pagination>
         </div>
-
-
-
 
       </div>
 
