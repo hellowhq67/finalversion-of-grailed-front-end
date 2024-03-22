@@ -6,7 +6,7 @@ import Mensweare from "@/components/Sections/Mensweare/Mensweare";
 import Card from "@/components/Sections/FeaturedCollection/Card";
 import React from "react";
 import Womensweare from "@/components/Sections/Womenswere/Womenswere";
-import Designer from '@/components/Designer/Designers'
+import Designer from "@/components/Sections/PopulerDesigner/Designer";
 import Slider from "@/components/Sections/Slider/Slider";
 import Footer from "@/components/Navigations/Footer";
 import Modal from "@/components/authModal/Modals";
@@ -22,7 +22,6 @@ export default function page() {
           flexDirection: "column",
           height: "100%",
           margin: "4rem 0px",
- 
         }}
       >
         <NestedMenu />
