@@ -17,6 +17,7 @@ export default function page() {
   
 
 
+  const [sortOption, setSortOption] = useState('');
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
@@ -85,6 +86,19 @@ export default function page() {
   };
   const calculateDiscountPercentage = (price, floorPrice) => {
     return ((price - floorPrice) / price) * 100;
+  };
+  const handleSortChange = (event) => {
+    const option = event.target.value;
+    setSortOption(option);
+    if (option === 'lowPrice') {
+      setProducts([...products.sort((a, b) => a.price - b.price)]);
+    } else if (option === 'highPrice') {
+      setProducts([...products.sort((a, b) => b.price - a.price)]);
+    } else if (option === 'new') {
+      setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
+    } else {
+      // Default sorting or any other sorting logic
+    }
   };
   return (
 
