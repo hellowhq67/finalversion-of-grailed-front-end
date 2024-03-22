@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import Link from 'next/link';
 import axios from 'axios';
 import Footer from '@/components/Navigations/Footer'
-import Designer from '@/components/Designer/Designers'
+import Designers from '@/components/Designer/Designers'
 import Page from '@/components/Sections/article/Page'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 export default function page() {
@@ -30,7 +30,7 @@ export default function page() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/products');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       setProducts(response.data.products);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -108,7 +108,7 @@ export default function page() {
         </svg>
 
       </div>
-      <Designer />
+      <Designers />
       <Page/>
       <div className={style.wrapper2}>
         <span style={{ fontWeight: "bold" }}>{products.length} listings</span>
