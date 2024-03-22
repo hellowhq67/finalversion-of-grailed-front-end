@@ -53,13 +53,13 @@ export default function NestedMenu() {
             </ul>
           </li>
           <li>
-            <Link href="">OUTERWEAR</Link>
+            <Link href="/products">OUTERWEAR</Link>
           </li>
           <li>
             <Link href="/products/cetagory/menswear/footwear">FOOTWEAR</Link>
           </li>
           <li>
-            <Link href="">TAILORING</Link>
+            <Link href="/products">TAILORING</Link>
           </li>
           <li>
             <Link href="/products/cetagory/menswear/accesories">ACCESSORIES</Link>
