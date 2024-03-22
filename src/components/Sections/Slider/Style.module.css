@@ -81,6 +81,9 @@
 .discount {
   font-size: 12px;
 }
+.btn svg{
+  color: #000000;
+}
 .price {
   color: black;
 }
