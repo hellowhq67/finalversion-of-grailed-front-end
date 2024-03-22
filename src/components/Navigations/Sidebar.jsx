@@ -74,11 +74,23 @@ function Sidebar({ toggleSidebar, isOpen }) {
         </AccordionSummary>
         <AccordionDetails>
           <div className={style.checkboxMobile}>
-            <Link href={"/favorites/"}>FAVORITES</Link>
-            <Link href={"/purchases"}>PURCHASES</Link>
-            {!user ? "" : <Link href={`/sell/${user&&user.uid}`}>Sell</Link>}
-            
-            <Link href={`/profile/${user&&user.uid}`}>MY ACCOUNT</Link>
+     <Link href={"/favorites"}>FAVORITES</Link>
+            <Link href={""}>PURCHASES</Link>
+            {!user ? (
+              ""
+            ) : (
+              <Link href={`/profile/${user && user.uid}`}>MY ACCOUNT</Link>
+            )}
+            {!user ? (
+              ""
+            ) : (
+              <Link href={` /profile/address/${user && user.uid}`}>
+                Address
+              </Link>
+            )}
+
+            {!user ? "" : <Link href={`/sell/${user && user.uid}`}>Sell</Link>}
+
             <Link onClick={handelLogout} href="">
               SIGN OUT
             </Link>
