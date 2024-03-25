@@ -165,9 +165,8 @@ export default function page() {
       </div>
       <div className={style.wrapper}>
       <div
-          className={`${style.productFilter} ${
-            sidebarOpen ? "" : style.closed
-          }`}
+          className={`${style.productFilter} ${sidebarOpen ? "" : style.closed
+            }`}
         >
           <div className={style.sizeBox}>
             <p>Set up to filter out listings that are not in your size.</p>
@@ -180,16 +179,10 @@ export default function page() {
           >
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
+
               }
               aria-controls="panel1-content"
               id="panel1-header"
@@ -221,16 +214,10 @@ export default function page() {
           <Accordion style={{ border: "none" }} defaultExpanded>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
+
               }
               aria-controls="panel1-content"
               id="panel1-header"
@@ -244,15 +231,8 @@ export default function page() {
               >
                 <AccordionSummary
                   expandIcon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   }
                   aria-controls="panel1-content"
@@ -266,15 +246,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -321,15 +294,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -423,15 +389,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -478,15 +437,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -557,15 +509,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -622,15 +567,8 @@ export default function page() {
               >
                 <AccordionSummary
                   expandIcon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   }
                   aria-controls="panel1-content"
@@ -644,15 +582,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -698,15 +629,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -744,15 +668,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -803,15 +720,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -878,15 +788,8 @@ export default function page() {
           <Accordion style={{ border: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -894,99 +797,1089 @@ export default function page() {
             >
               <Typography >Size</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <div className={style.checkbox}>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="26"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>26</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="27"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>27</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="29"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>29</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="30"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>30</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="42"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>42</span>
-                </span>
-              </div>
-              <AccordionDetails>
-                <div className={style.checkbox}>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="XXS/40"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> XXS/40</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="XS/42"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> XS/42</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name=" S/44"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> S/44-46</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="L/53-54 "
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    L/53-54 <span></span>
-                  </span>
+            <div>
+
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>menwear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Accessories
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="OS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>OS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                    
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Outwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
                 </div>
-              </AccordionDetails>
-            </AccordionDetails>
+              </Accordion>
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>womenwear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Accessories
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="OS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>OS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                    
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Outwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </div>
+              </Accordion>
+            </div>
           </Accordion>
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1043,15 +1936,8 @@ export default function page() {
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1092,15 +1978,8 @@ export default function page() {
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1110,36 +1989,41 @@ export default function page() {
             </AccordionSummary>
             <AccordionDetails>
               <div style={{ display: "flex" }}>
-                <input
-                  type="number"
-                  placeholder="Min Price"
-                  value={minPrice}
-                  style={{ width: "100%", padding: "10px" }}
-                  onChange={handleMinPriceChange}
-                />
-                <input
-                  type="number"
-                  placeholder="Max Price"
-                  value={maxPrice}
-                  style={{ width: "100%", padding: "10px" }}
-                  onChange={handleMaxPriceChange}
-                />
+                <div style={{ display: "flex", alignItems: "center", border: "1px solid black", margin: "0px 10px" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={20}>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+
+                  <input
+
+                    placeholder="Min Price"
+                    value={minPrice}
+                    style={{ width: "100%", padding: "10px", outline: "none", border: "none", fontSize: "10px" }}
+                    onChange={handleMinPriceChange}
+                  />
+                </div>
+                <div style={{ display: "flex", alignItems: "center", border: "1px solid black", margin: "0px 10px" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={20}>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+
+                  <input
+
+                    placeholder="Max Price"
+                    value={maxPrice}
+                    style={{ width: "100%", padding: "10px", border: "none", outline: "none", fontSize: "10px" }}
+                    onChange={handleMaxPriceChange}
+                  />
+                </div>
               </div>
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ border: "none", background: "none" }}> 
+          <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1148,13 +2032,13 @@ export default function page() {
               <Typography>Filter By Keyword</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <div style={{display:"flex",border:"1px solid black"}}>
+              <div style={{ display: "flex", border: "1px solid black" }}>
 
                 <input
                   type="text"
                   placeholder="Enter keywords"
                   value={keywords}
-                  style={{ border: "none", outline: "none",padding:"10px" }}
+                  style={{ border: "none", outline: "none", padding: "10px" }}
                   onChange={handleKeywordsChange}
                 />
               </div>
