@@ -64,6 +64,11 @@ export default function Public({ sellerID }) {
   const toggleSidebarclose = () => {
     setSidebarOpen(!sidebarOpen); // Step 2
   };
+
+    const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
