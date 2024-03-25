@@ -21,7 +21,7 @@ export default function Slider() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/products/total"
+        "https://adminpanellive.vercel.app/api/products/total"
       );
       // Filter products where userName is "STAFPRODUCTS"
       const filteredProducts = response.data.products.filter(
