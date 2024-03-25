@@ -34,7 +34,7 @@ export default function page() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/products/total');
+      const response = await axios.get('https://adminpanellive.vercel.app/api/products/total');
       // Filter products where userName is "STAFPRODUCTS"
       const filteredProducts = response.data.products.filter(product => product.userName === 'STAFPRODUCTS');
       setProducts(filteredProducts);
