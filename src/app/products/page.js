@@ -74,7 +74,7 @@ export default function page() {
     const fetchTotalProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/api/products/total"
+          "https://adminpanellive.vercel.app/api/products/total"
         );
 
         const totalProducts = response.data.products.length;
