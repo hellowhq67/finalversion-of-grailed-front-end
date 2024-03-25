@@ -302,14 +302,15 @@ export default function Public({ sellerID }) {
         </div>
         <div className={style.buttonCol}>
           <button className={style.edits}>Follow</button>
-          <button className={style.shear}>
+       <button className={style.shear}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              width={40}
+              style={{color:"#000000"}}
+              width={30}
             >
               <path
                 strokeLinecap="round"
