@@ -5,18 +5,17 @@
   gap: 6rem;
   padding: 2rem 0px;
 }
-.infoWrapper{
+.infoWrapper {
   display: flex;
 }
 .greenRating .MuiRating-iconFilled {
   color: green;
 }
 
-.wrapper h2{
+.wrapper h2 {
   font-weight: bold;
   font-size: 20px;
   margin: 4px 0px;
- 
 }
 
 .details {
@@ -31,11 +30,11 @@
   display: flex;
   align-items: center;
 }
-.profileInfo{
+.profileInfo {
   display: flex;
 }
-.description{
-  line-height:30px;
+.description {
+  line-height: 30px;
 }
 .swiperslide {
   font-size: 18px;
@@ -51,46 +50,44 @@
   padding: 20px;
   width: 150px;
 }
-.swiperslid img{
-  width:100px ;
+.swiperslid img {
+  width: 100px;
 }
-.serchCol{
+.serchCol {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px 0px;
 }
-.feedFlex{
+.feedFlex {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.feedBackCard{
+.feedBackCard {
   display: flex;
 }
-.followbtn{
+.followbtn {
   padding: 7px 9px;
   background: black;
   color: white;
 }
-.svgs{
+.svgs {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.reletedSearch{
+.reletedSearch {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-
-
 }
-.reletedSearch p{
+.reletedSearch p {
   border: 1px solid black;
   padding: 10px;
 }
-.selects{
+.selects {
   width: 400px;
 }
 .btn1 {
@@ -112,6 +109,7 @@
   font-weight: bold;
   font-size: 17px;
   cursor: pointer;
+  color: #000000;
 }
 .sugcol1 {
   margin: 4rem 20px;
@@ -122,35 +120,34 @@
   color: white;
   margin: 20px 0px;
 }
-.reportBtns{
+.reportBtns {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-.reportBtns button{
+.reportBtns button {
   padding: 10px 20px;
   font-weight: bold;
   background-color: transparent;
   align-items: center;
   display: flex;
-
 }
-.modalInputCOl{
+.modalInputCOl {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.offerModals{
+.offerModals {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.offerInfo{
+.offerInfo {
   display: flex;
   gap: 4px;
 }
-.offerInput{
+.offerInput {
   width: 400px;
   border-bottom: 1px solid blue;
   background: none;
@@ -163,9 +160,9 @@
     justify-content: center;
     flex-direction: column;
     width: 100vw;
-    gap: 2rem;
+    gap: 20px;
   }
-  .svgs{
+  .svgs {
     display: none;
   }
   .details {
