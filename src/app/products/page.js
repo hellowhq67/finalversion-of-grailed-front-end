@@ -74,7 +74,7 @@ export default function page() {
     const fetchTotalProducts = async () => {
       try {
         const response = await axios.get(
-          "https://adminpanellive.vercel.app/api/products/total"
+          "http://localhost:3001/api/products/total"
         );
 
         const totalProducts = response.data.products.length;
@@ -226,9 +226,8 @@ export default function page() {
       </div>
       <div className={style.wrapper}>
         <div
-          className={`${style.productFilter} ${
-            sidebarOpen ? "" : style.closed
-          }`}
+          className={`${style.productFilter} ${sidebarOpen ? "" : style.closed
+            }`}
         >
           <div className={style.sizeBox}>
             <p>Set up to filter out listings that are not in your size.</p>
@@ -241,16 +240,10 @@ export default function page() {
           >
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
+
               }
               aria-controls="panel1-content"
               id="panel1-header"
@@ -282,16 +275,10 @@ export default function page() {
           <Accordion style={{ border: "none" }} defaultExpanded>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
+
               }
               aria-controls="panel1-content"
               id="panel1-header"
@@ -305,15 +292,8 @@ export default function page() {
               >
                 <AccordionSummary
                   expandIcon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   }
                   aria-controls="panel1-content"
@@ -327,15 +307,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -382,15 +355,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -484,15 +450,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -539,15 +498,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -618,15 +570,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -683,15 +628,8 @@ export default function page() {
               >
                 <AccordionSummary
                   expandIcon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   }
                   aria-controls="panel1-content"
@@ -705,15 +643,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -759,15 +690,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -805,15 +729,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -864,15 +781,8 @@ export default function page() {
                     <Accordion style={{ border: "none", boxShadow: "none" }}>
                       <AccordionSummary
                         expandIcon={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-caret-down"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                           </svg>
                         }
                         aria-controls="panel1-content"
@@ -939,15 +849,8 @@ export default function page() {
           <Accordion style={{ border: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1039,15 +942,8 @@ export default function page() {
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1104,15 +1000,8 @@ export default function page() {
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1153,15 +1042,8 @@ export default function page() {
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1171,36 +1053,41 @@ export default function page() {
             </AccordionSummary>
             <AccordionDetails>
               <div style={{ display: "flex" }}>
-                <input
-                  type="number"
-                  placeholder="Min Price"
-                  value={minPrice}
-                  style={{ width: "100%", padding: "10px" }}
-                  onChange={handleMinPriceChange}
-                />
-                <input
-                  type="number"
-                  placeholder="Max Price"
-                  value={maxPrice}
-                  style={{ width: "100%", padding: "10px" }}
-                  onChange={handleMaxPriceChange}
-                />
+                <div style={{ display: "flex", alignItems: "center", border: "1px solid black", margin: "0px 10px" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={20}>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+
+                  <input
+
+                    placeholder="Min Price"
+                    value={minPrice}
+                    style={{ width: "100%", padding: "10px", outline: "none", border: "none", fontSize: "10px" }}
+                    onChange={handleMinPriceChange}
+                  />
+                </div>
+                <div style={{ display: "flex", alignItems: "center", border: "1px solid black", margin: "0px 10px" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={20}>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+
+                  <input
+
+                    placeholder="Max Price"
+                    value={maxPrice}
+                    style={{ width: "100%", padding: "10px", border: "none", outline: "none", fontSize: "10px" }}
+                    onChange={handleMaxPriceChange}
+                  />
+                </div>
               </div>
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{ border: "none", background: "none" }}> 
+          <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
               expandIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               }
               aria-controls="panel1-content"
@@ -1209,13 +1096,13 @@ export default function page() {
               <Typography>Filter By Keyword</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <div style={{display:"flex",border:"1px solid black"}}>
+              <div style={{ display: "flex", border: "1px solid black" }}>
 
                 <input
                   type="text"
                   placeholder="Enter keywords"
                   value={keywords}
-                  style={{ border: "none", outline: "none",padding:"10px" }}
+                  style={{ border: "none", outline: "none", padding: "10px" }}
                   onChange={handleKeywordsChange}
                 />
               </div>
