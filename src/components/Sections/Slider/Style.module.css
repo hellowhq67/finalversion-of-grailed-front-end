@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 15rem;
+  width: 11rem;
 }
 .imgCol {
   position: relative;
@@ -15,8 +15,8 @@
 }
 
 .imgCol img {
-  width: 15rem;
-  height: 16rem;
+  width: 100%;
+  height: 14rem;
 }
 .tags {
   position: absolute;
@@ -25,12 +25,14 @@
   background-color: black;
   color: whitesmoke;
   padding: 5px 4px;
+  font-size: 14px;
 }
 .descCol {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  width: 100%;
 }
 .flex {
   display: flex;
@@ -38,7 +40,7 @@
   width: 100%;
   justify-content: space-between;
   margin: 6px 0px;
-  padding: 0px 16rem;
+  padding: 0px 15rem;
 }
 .wrapper {
   display: flex;
@@ -60,27 +62,34 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 4px 0px;
+  margin: 1px 0px;
+  font-size: 14px;
 }
 .btn {
   background: transparent;
   border: none;
 }
 .title {
-  font-weight: bold;
-  margin: 4px 0px;
+  font-weight: 500;
+  margin: 1px 0px;
 }
 .price {
   font-weight: bold;
 }
+.desc {
+  font-size: 14px;
+}
 .floorPrice {
   text-decoration: line-through;
-  color: gray;
+  color: rgb(78, 72, 72);
   font-size: 13px;
   margin: 3px;
 }
 .discount {
   font-size: 12px;
+}
+.btn svg {
+  font-size: 20px;
 }
 .price {
   color: black;
@@ -88,7 +97,7 @@
 .floorPrice {
   text-decoration: line-through;
   color: gray;
-  font-size: 13px;
+  font-size: 12px;
   margin: 3px;
 }
 .btn svg {
@@ -114,20 +123,41 @@
   padding: 5px;
 }
 @media (max-width: 750px) {
-  .customprevbutton {
- display: none;
+  .time {
+    font-size: 7px;
+    width: 100%;
   }
-  
+  .customprevbutton {
+    display: none;
+  }
+
   .customnextbutton {
     display: none;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px;
   }
   .ProductSildes {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 8rem;
+    width: 100%;
     font-size: 10px;
+  }
+  .price span{
+    font-size:8px;
+  }
+  .tags {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    background-color: black;
+    color: whitesmoke;
+    padding: 5px 4px;
+    font-size: 7px;
   }
   .wrapper {
     display: flex;
@@ -137,21 +167,27 @@
     width: 100%;
     height: 100%;
   }
-
+  .btn svg {
+    width: 10px;
+  }
+  .desc {
+    font-size: 0.5rem;
+  }
   .ProductSildes img {
     width: 100%;
     height: auto;
   }
+
   .flex {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
     margin: 6px 0px;
-    padding: 10px 2rem;
+    padding: 10px 1px;
     font-size: 15px;
   }
   .flex h2 {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
