@@ -858,86 +858,1083 @@ export default function page() {
             >
               <Typography >Size</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <div className={style.checkbox}>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="26"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>26</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="27"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>27</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="29"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>29</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="30"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>30</span>
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    name="42"
-                    onChange={handleCheckboxChange}
-                  />{" "}
-                  <span>42</span>
-                </span>
-              </div>
-              <AccordionDetails>
-                <div className={style.checkbox}>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="XXS/40"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> XXS/40</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="XS/42"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> XS/42</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name=" S/44"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <span> S/44-46</span>
-                  </span>
-                  <span>
-                    <input
-                      type="checkbox"
-                      name="L/53-54 "
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    L/53-54 <span></span>
-                  </span>
+            <div>
+
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>menwear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Accessories
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="OS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>OS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                    
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Outwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
                 </div>
-              </AccordionDetails>
-            </AccordionDetails>
+              </Accordion>
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
+              >
+                <AccordionSummary
+                  expandIcon={
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>womenwear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="26"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>26</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="27"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>27</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="28"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>28</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="29"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>29</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="17k"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>17k</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="30"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>30</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="31"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>31</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="33"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>33</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="35"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>35</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="36"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>36</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="37"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>37</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="38"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>38</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="39"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>39</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="44"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>44</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Accessories
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="OS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>OS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="32"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>32</span>
+                          </span>
+                    
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+
+                  {/*==================footwear==========================*/}
+
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width={13}>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Outwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXS/40"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXS/40</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XS/42"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XS/42</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="S/44-46"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>S/44-46</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="M/48-50"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>M/48-50</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="L/52-54"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>L/52-54</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XL/56"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XL/56</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="XXL/5"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>XXL/5</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </div>
+              </Accordion>
+            </div>
           </Accordion>
           <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
