@@ -15,11 +15,18 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 export default function page() {
 
 
-
-  const [sortOption, setSortOption] = useState('');
-  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false); // Step 1
+  const [minPrice, setMinPrice] = useState(""); // State for minimum price
+  const [maxPrice, setMaxPrice] = useState("");
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalpro, settotalpro] = useState("");
+  const [sortOption, setSortOption] = useState("");
+  const [keywords, setKeywords] = useState(""); // Step 1
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen); // Step 2
   };
@@ -36,39 +43,35 @@ export default function page() {
       console.error('Error fetching products:', error);
     }
   };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFilters({ ...filters, [name]: value });
-  };
-  // Function to handle checkbox change and update filters
+  // Function to handle min price input change
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     setFilters({ ...filters, [name]: checked });
   };
+  const calculateDiscountPercentage = (price, floorPrice) => {
+    return ((price - floorPrice) / price) * 100;
+  };
   const handleSortChange = (event) => {
     const option = event.target.value;
     setSortOption(option);
-    if (option === 'lowPrice') {
+    if (option === "lowPrice") {
       setProducts([...products.sort((a, b) => a.price - b.price)]);
-    } else if (option === 'highPrice') {
+    } else if (option === "highPrice") {
       setProducts([...products.sort((a, b) => b.price - a.price)]);
-    } else if (option === 'new') {
-      setProducts([...products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))]);
+    } else if (option === "new") {
+      setProducts([
+        ...products.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        ),
+      ]);
     } else {
       // Default sorting or any other sorting logic
     }
   };
-
-
-  // Function to filter products based on selected filters
   const filterProducts = (product) => {
     // Check if product matches all selected filters
     for (const filter in filters) {
-      if (
-        filters[filter] &&
-        filter !== "minPrice" &&
-        filter !== "maxPrice"
-      ) {
+      if (filters[filter] && filter !== "minPrice" && filter !== "maxPrice") {
         if (filter === "size") {
           if (!product.size.includes(filters[filter])) {
             return false;
@@ -92,10 +95,37 @@ export default function page() {
         }
       }
     }
+    // Check min and max price filter
+    if (minPrice && parseInt(product.floorPrice) < parseInt(minPrice)) {
+      return false;
+    }
+    if (maxPrice && parseInt(product.floorPrice) > parseInt(maxPrice)) {
+      return false;
+    }
+    if (
+      keywords &&
+      !product.productName.toLowerCase().includes(keywords.toLowerCase())
+    ) {
+      return false;
+    }
+
     return true;
   };
-  const calculateDiscountPercentage = (price, floorPrice) => {
-    return ((price - floorPrice) / price) * 100;
+
+  // Function to handle min price input change
+  const handleMinPriceChange = (event) => {
+    const { value } = event.target;
+    setMinPrice(value);
+  };
+
+  // Function to handle max price input change
+  const handleMaxPriceChange = (event) => {
+    const { value } = event.target;
+    setMaxPrice(value);
+  };
+  const handleKeywordsChange = (event) => {
+    const { value } = event.target;
+    setKeywords(value);
   };
   return (
 
@@ -134,17 +164,33 @@ export default function page() {
         </div>
       </div>
       <div className={style.wrapper}>
-        <div className={`${style.productFilter} ${sidebarOpen ? "" : style.closed}`}>
+      <div
+          className={`${style.productFilter} ${
+            sidebarOpen ? "" : style.closed
+          }`}
+        >
           <div className={style.sizeBox}>
             <p>Set up to filter out listings that are not in your size.</p>
             <button className={style.btn}>ADD MY SIZE</button>
           </div>
 
-          <Accordion style={{ border: "none", background: "none" }} defaultExpanded>
+          <Accordion
+            style={{ border: "none", background: "none" }}
+            defaultExpanded
+          >
             <AccordionSummary
-              expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-              </svg>}
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
               aria-controls="panel1-content"
               id="panel1-header"
             >
@@ -152,323 +198,968 @@ export default function page() {
             </AccordionSummary>
             <AccordionDetails>
               <div className={style.checkbox}>
-                <label style={style.label}><input type='checkbox' name="MENSWEAR" onChange={handleCheckboxChange} /> Meanswear</label>
-                <label style={style.label}><input type='checkbox' name='WOMENSWEAR' onChange={handleCheckboxChange} /> Womeanswear</label>
-
+                <label style={style.label}>
+                  <input
+                    type="checkbox"
+                    name="MENSWEAR"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Meanswear
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkbox"
+                    name="WOMENSWEAR"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Womeanswear
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
 
           <Accordion style={{ border: "none" }} defaultExpanded>
             <AccordionSummary
-              expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-              </svg>}
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography style={{ fontWeight: "bold" }}>Cetagory</Typography>
+              <Typography >Cetagory</Typography>
             </AccordionSummary>
-            <Accordion style={{ border: 'none' }} defaultExpanded >
-              <AccordionSummary
-                expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                </svg>}
-                aria-controls="panel1-content"
-                id="panel1-header"
+            <div>
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
               >
-                <Typography style={{ fontWeight: 'bold', }}>menwear</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {/*==================top==========================*/}
-                <Accordion style={{ border: 'none' }} >
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <AccordionSummary
+                  expandIcon={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-caret-down"
+                      viewBox="0 0 16 16"
+                    >
                       <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>top</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='TOPS' onChange={handleCheckboxChange} /> <span>All tops</span></span>
-                      <span><input type='checkbox' name='LONG SLEEVE T-SHIRTS' onChange={handleCheckboxChange} /> <span>  LONG SLEEVE T-SHIRTS</span></span>
-                      <span><input type='checkbox' name='POLOS' onChange={handleCheckboxChange} /> <span>POLOS</span></span>
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>menwear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="TOPS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>All tops</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="LONG SLEEVE T-SHIRTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span> LONG SLEEVE T-SHIRTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="POLOS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>POLOS</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
 
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="JEANS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>JEANS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="JOGGERS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>JOGGERS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="JUMPSUITS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>JUMPSUITS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="LEGGINGS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>LEGGINGS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="MAXI SKIRTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>MAXI SKIRTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="MIDI SKIRTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>MIDI SKIRTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="MINI SKIRTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>MINI SKIRTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="PANTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>PANTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="SHORTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>SHORTS</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
 
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="FOOTWEAR"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span> All Footwear</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="SHOES"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>SHOES</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="SNEAKERS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>SNEAKERS</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
 
+                  {/*==================footwear==========================*/}
 
-                    </div>
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Accessories
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BAGS & LUGGAGE"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BAGS & LUGGAGE</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BELTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BELTS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="GLASSES"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>GLASSES</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="GLOVES & SCARVES"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>GLOVES & SCARVES</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="HATS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>HATS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="JEWELRY & WATCHES"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>JEWELRY & WATCHES</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
 
+                  {/*==================footwear==========================*/}
 
-                  </AccordionDetails>
-                </Accordion>
-                {/*==================topclose==========================*/}
-                {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Outwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="JACKETS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>JACKETS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="COATS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>COATS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BLAZERS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BLAZERS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="VESTS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>VESTS</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </div>
+              </Accordion>
 
-                <Accordion style={{ border: 'none' }}>
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>Bottoms</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='BOTTOMS' onChange={handleCheckboxChange} /> <span>All bottoms</span></span>
-                      <span><input type='checkbox' name='CASUAL PANTS' onChange={handleCheckboxChange} /> <span>CASUAL PANTS</span></span>
-                      <span><input type='checkbox' name='CROPPED PANTS' onChange={handleCheckboxChange} /> <span>CROPPED PANTS</span></span>
-                      <span><input type='checkbox' name='DENIM' onChange={handleCheckboxChange} /> <span>DENIM</span></span>
-
-
-
-                    </div>
-
-
-                  </AccordionDetails>
-                </Accordion>
-
-
-
-
-
-                {/*==================footwear==========================*/}
-
-
-
-
-
-                <Accordion style={{ border: 'none' }}>
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>Footwear</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='FOOTWEAR' onChange={handleCheckboxChange} /> <span> All Footwear</span></span>
-                      <span><input type='checkbox' name='SHOES' onChange={handleCheckboxChange} /> <span>SHOES</span></span>
-                      <span><input type='checkbox' name='SNEAKERS' onChange={handleCheckboxChange} /> <span>SNEAKERS</span></span>
-
-
-
-                    </div>
-
-
-                  </AccordionDetails>
-                </Accordion>
-
-                {/*==================footwear==========================*/}
-
-
-
-
-
-              </AccordionDetails>
-            </Accordion>
-            <Accordion style={{ border: 'none' }} >
-              <AccordionSummary
-                expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                </svg>}
-                aria-controls="panel1-content"
-                id="panel1-header"
+              <Accordion
+                style={{ border: "none", boxShadow: "none" }}
+                defaultExpanded
               >
-                <Typography style={{ fontWeight: 'bold', }}>Womaneswear</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {/*==================top==========================*/}
-                <Accordion style={{ border: 'none' }} >
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <AccordionSummary
+                  expandIcon={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-caret-down"
+                      viewBox="0 0 16 16"
+                    >
                       <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>top</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='BLOUSES' onChange={handleCheckboxChange} /> <span>BLOUSES</span></span>
-                      <span><input type='checkbox' name='BODYSUITS' onChange={handleCheckboxChange} /> <span>BODYSUITS</span></span>
-                      <span><input type='checkbox' name='BUTTON UPS' onChange={handleCheckboxChange} /> <span>All tops</span></span>
-
-
-
-                    </div>
-
-
-                  </AccordionDetails>
-                </Accordion>
-                {/*==================topclose==========================*/}
-                {/*==================bottom==========================*/}
-
-                <Accordion style={{ border: 'none' }} >
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>Bottoms</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='Jeans' onChange={handleCheckboxChange} /> <span>Jeans</span></span>
-                      <span><input type='checkbox' name='Leggings' onChange={handleCheckboxChange} /> <span>Leggings</span></span>
-
-
-
-                    </div>
-
-
-                  </AccordionDetails>
-                </Accordion>
-
-
-
-
-
-                {/*==================bottom==========================*/}
-                {/*==================footwear==========================*/}
-                <Accordion style={{ border: 'none' }} >
-                  <AccordionSummary
-                    expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                      <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                    </svg>}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    <Typography style={{ fontWeight: 'bold', }}>Footwear</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className={style.checkbox}>
-                      <span><input type='checkbox' name='FOOTWEARS' value={''} /> <span>All Footwear</span></span>
-                      <span><input type='checkbox' name='Casual Pants' value={'Boots'} /> <span>Boots</span></span>
-                      <span><input type='checkbox' name='Cropped Pants' value={'hells'} /> <span> hells</span></span>
-                      <span><input type='checkbox' name='Denim' value={''} /> <span>Denim</span></span>
-
-
-
-                    </div>
-
-
-                  </AccordionDetails>
-                </Accordion>
-
-
-                {/*==================footwear==========================*/}
-
-
-              </AccordionDetails>
-            </Accordion>
+                    </svg>
+                  }
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                >
+                  <Typography>womaneswear</Typography>
+                </AccordionSummary>
+                <div>
+                  {/*==================top==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          top
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BLOUSES"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BLOUSES</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BODYSUITS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BODYSUITS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BUTTON UPS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>All tops</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                  {/*==================topclose==========================*/}
+                  {/*==================bottom==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Bottoms
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="Jeans"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>Jeans</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="Leggings"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>Leggings</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                  {/*==================bottom==========================*/}
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography style={{ fontSize: "13px" }}>
+                          Footwear
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails style={{ padding: "0px" }}>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="FOOTWEARS"
+                              value={""}
+                            />{" "}
+                            <span>All Footwear</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="Casual Pants"
+                              value={"Boots"}
+                            />{" "}
+                            <span>Boots</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="Cropped Pants"
+                              value={"hells"}
+                            />{" "}
+                            <span> hells</span>
+                          </span>
+                          <span>
+                            <input type="checkbox" name="Denim" value={""} />{" "}
+                            <span>Denim</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                  {/*==================footwear==========================*/}
+                  {/*==================footwear==========================*/}
+                  {/*==================footwear==========================*/}
+                  <div>
+                    <Accordion style={{ border: "none", boxShadow: "none" }}>
+                      <AccordionSummary
+                        expandIcon={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                          </svg>
+                        }
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        <Typography>Outwear</Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className={style.checkbox}>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BLAZERS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BLAZERS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="BOMBERS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>BOMBERS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="COATS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>COATS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="DENIM JACKETS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>DENIM JACKETS</span>
+                          </span>
+                          <span>
+                            <input
+                              type="checkbox"
+                              name="DOWN JACKETS"
+                              onChange={handleCheckboxChange}
+                            />{" "}
+                            <span>DOWN JACKETS</span>
+                          </span>
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                  {/*==================footwear==========================*/}{" "}
+                  {/*==================footwear==========================*/}{" "}
+                  {/*==================footwear==========================*/}
+                  <div></div>
+                  {/*==================footwear==========================*/}
+                </div>
+              </Accordion>
+            </div>
           </Accordion>
 
-          <Accordion style={{ border: 'none' }} >
+          <Accordion style={{ border: "none" }}>
             <AccordionSummary
-              expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-              </svg>}
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography style={{ fontWeight: "bold" }}>Size</Typography>
+              <Typography >Size</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div className={style.checkbox}>
-                <span><input type='checkbox' name='26' onChange={handleCheckboxChange} /> <span>26</span></span>
-                <span><input type='checkbox' name='27' onChange={handleCheckboxChange} /> <span>27</span></span>
-                <span><input type='checkbox' name='29' onChange={handleCheckboxChange} /> <span>29</span></span>
-                <span><input type='checkbox' name='30' onChange={handleCheckboxChange} /> <span>30</span></span>
-                <span><input type='checkbox' name='42' onChange={handleCheckboxChange} /> <span>42</span></span>
-
-
-
-
-
+                <span>
+                  <input
+                    type="checkbox"
+                    name="26"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  <span>26</span>
+                </span>
+                <span>
+                  <input
+                    type="checkbox"
+                    name="27"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  <span>27</span>
+                </span>
+                <span>
+                  <input
+                    type="checkbox"
+                    name="29"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  <span>29</span>
+                </span>
+                <span>
+                  <input
+                    type="checkbox"
+                    name="30"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  <span>30</span>
+                </span>
+                <span>
+                  <input
+                    type="checkbox"
+                    name="42"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  <span>42</span>
+                </span>
               </div>
               <AccordionDetails>
                 <div className={style.checkbox}>
-                  <span><input type='checkbox' name='XXS/40' onChange={handleCheckboxChange} /> <span> XXS/40</span></span>
-                  <span><input type='checkbox' name='XS/42' onChange={handleCheckboxChange} /> <span> XS/42</span></span>
-                  <span><input type='checkbox' name=' S/44' onChange={handleCheckboxChange} /> <span>  S/44-46</span></span>
-                  <span><input type='checkbox' name='L/53-54 ' onChange={handleCheckboxChange} /> L/53-54 <span></span></span>
-
+                  <span>
+                    <input
+                      type="checkbox"
+                      name="XXS/40"
+                      onChange={handleCheckboxChange}
+                    />{" "}
+                    <span> XXS/40</span>
+                  </span>
+                  <span>
+                    <input
+                      type="checkbox"
+                      name="XS/42"
+                      onChange={handleCheckboxChange}
+                    />{" "}
+                    <span> XS/42</span>
+                  </span>
+                  <span>
+                    <input
+                      type="checkbox"
+                      name=" S/44"
+                      onChange={handleCheckboxChange}
+                    />{" "}
+                    <span> S/44-46</span>
+                  </span>
+                  <span>
+                    <input
+                      type="checkbox"
+                      name="L/53-54 "
+                      onChange={handleCheckboxChange}
+                    />{" "}
+                    L/53-54 <span></span>
+                  </span>
                 </div>
-
-
               </AccordionDetails>
-
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ border: "none", background: "none" }} >
+          <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
-              expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-              </svg>}
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography style={{ fontWeight: "bold" }}>Designer</Typography>
+              <Typography >Designer</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div className={style.checkbox}>
-                <label style={style.label}><input type='checkBox' name='Gucchi' onChange={handleCheckboxChange} /> Gucchi</label>
-                <label style={style.label}><input type='checkBox' name='Louis Vuitton' onChange={handleCheckboxChange} /> Louis Vuitton</label>
-                <label style={style.label}><input type='checkBox' name='Jacquemus' onChange={handleCheckboxChange} /> Jacquemus</label>
-                <label style={style.label}><input type='checkBox' name="Kapital" onChange={handleCheckboxChange} /> Kapital</label>
-                <label style={style.label}><input type='checkBox' name='Loewe<' onChange={handleCheckboxChange} /> Loewe</label>
-
-
-
-
-
-
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="Gucchi"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Gucchi
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="Louis Vuitton"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Louis Vuitton
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="Jacquemus"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Jacquemus
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="Kapital"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Kapital
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="Loewe<"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Loewe
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
 
-
-
-
-          <Accordion style={{ border: "none", background: "none" }} >
+          <Accordion style={{ border: "none", background: "none" }}>
             <AccordionSummary
-              expandIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-              </svg>}
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography style={{ fontWeight: "bold" }}>Condition</Typography>
+              <Typography >Condition</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div className={style.checkbox}>
-                <label style={style.label}><input type='checkBox' name='new' onChange={handleCheckboxChange} /> New</label>
-                <label style={style.label}><input type='checkBox' name='used' onChange={handleCheckboxChange} /> Used</label>
-                <label style={style.label}><input type='checkBox' name='gently_used' onChange={handleCheckboxChange} /> Gently Used</label>
-
-
-
-
-
-
-
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="new"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  New
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="used"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Used
+                </label>
+                <label style={style.label}>
+                  <input
+                    type="checkBox"
+                    name="gently_used"
+                    onChange={handleCheckboxChange}
+                  />{" "}
+                  Gently Used
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
 
+          <Accordion style={{ border: "none", background: "none" }}>
+            <AccordionSummary
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography>Price</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div style={{ display: "flex" }}>
+                <input
+                  type="number"
+                  placeholder="Min Price"
+                  value={minPrice}
+                  style={{ width: "100%", padding: "10px" }}
+                  onChange={handleMinPriceChange}
+                />
+                <input
+                  type="number"
+                  placeholder="Max Price"
+                  value={maxPrice}
+                  style={{ width: "100%", padding: "10px" }}
+                  onChange={handleMaxPriceChange}
+                />
+              </div>
+            </AccordionDetails>
+          </Accordion>
 
+          <Accordion style={{ border: "none", background: "none" }}> 
+            <AccordionSummary
+              expandIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+              }
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography>Filter By Keyword</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div style={{display:"flex",border:"1px solid black"}}>
+
+                <input
+                  type="text"
+                  placeholder="Enter keywords"
+                  value={keywords}
+                  style={{ border: "none", outline: "none",padding:"10px" }}
+                  onChange={handleKeywordsChange}
+                />
+              </div>
+            </AccordionDetails>
+          </Accordion>
         </div>
 
         <div className={style.productWrapprer}>
