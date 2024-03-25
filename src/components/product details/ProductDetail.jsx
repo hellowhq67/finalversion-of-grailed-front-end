@@ -371,7 +371,7 @@ function ProductDetail({ productId }) {
         <span style={{ margin: "20px" }}>
           <Link href="">{product.designers}</Link>
           {"> "}
-          <Link href="">{product.designers}</Link>
+          <span >{product.productName}</span>
         </span>
         <div className={styles.wrapper}>
           <ProductSilder
@@ -425,9 +425,10 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-              <span style={{display:"flex",alignItems:"center"}}>
+               <div style={{display:"flex",alignItems:"center"}}>
               <p>  Shipping — {selectedShipping} {product.shippings}</p>
-                <FormControl variant="standard" sx={{ m: 1 }}>
+               <div style={{transform:"translateY(-5px)"}}>
+               <FormControl variant="standard" sx={{ m: 1 }} >
                   <Select
                     labelId="shipping-label"
                     id="shipping"
@@ -442,7 +443,8 @@ function ProductDetail({ productId }) {
                     <MenuItem value="Canada">Canada</MenuItem>
                   </Select>
                 </FormControl>
-              </span>
+               </div>
+              </div>
 
               {!user ? (
                 <button className={styles.btn1} onClick={handleOpen4}>
@@ -527,7 +529,7 @@ function ProductDetail({ productId }) {
                   </span>
                   <div style={{ margin: "10px 0px", fontSize: "14px" }}>
                     {`${userData.transaction}  Transactions`}
-                    <Link href="" style={{ color: "black" }}>
+                    <Link  href={`/profile/designer/${product.userId}`} style={{ color: "black" }}>
                       {`.${
                         sellerProduct.length
                       } items for sell`}
