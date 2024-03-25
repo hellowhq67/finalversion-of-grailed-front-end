@@ -20,7 +20,7 @@ export default function Cards() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+      const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
       setProducts(response.data.products.slice(0,5)); // Slice to get only 6 products
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -83,6 +83,7 @@ export default function Cards() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
+                    style={{color:"#000000"}}
                     width={24}
                   >
                     <path
