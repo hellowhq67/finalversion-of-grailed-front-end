@@ -21,7 +21,7 @@ export default function Slider() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "https://adminpanellive.vercel.app/api/products/total"
+        "http://localhost:3001/api/products/total"
       );
       // Filter products where userName is "STAFPRODUCTS"
       const filteredProducts = response.data.products.filter(
@@ -36,45 +36,6 @@ export default function Slider() {
   const calculateDiscountPercentage = (price, floorPrice) => {
     return ((price - floorPrice) / price) * 100;
   };
-  const CustomPrevButton = ({ onClick }) => (
-    <button className={style.customprevbutton} onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        width={30}
-        color="#000000"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-    </button>
-  );
-
-  const CustomNextButton = ({ onClick }) => (
-    <button className={style.customnextbutton} onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        width={30}
-        color="#000000"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-    </button>
-  );
 
   return (
     <div className={style.SliderCol}>
@@ -87,37 +48,38 @@ export default function Slider() {
           >{`SEE ALL->`}</Link>
         </div>
         <Swiper
-          slidesPerView={1}
-          spaceBetween={10}
-          navigation={{
-            prevEl: `.${style.customprevbutton}`,
-            nextEl: `.${style.customnextbutton}`,
-          }}
+          slidesPerView={5} // Show 4 slides per view
+          spaceBetween={20} // Space between slides
           modules={[Pagination, Navigation]}
           breakpoints={{
             "@0.00": {
               slidesPerView: 2,
               spaceBetween: 10,
             },
-            "@0.75": {
+            "@0.20": {
               slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            "@0.48": {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            "@0.64": {
+              slidesPerView: 5,
               spaceBetween: 20,
             },
             "@1.00": {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-            "@1.50": {
-              slidesPerView: 4,
+              slidesPerView: 5,
               spaceBetween: 40,
             },
+            "@1.50": {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
           }}
+          
           className={style.swiper}
         >
-          <div className={style.customprevbutton}>
-            <CustomPrevButton />
-          </div>
-
           {products.map((product) => (
             <SwiperSlide key={product._id} className={style.swiperslide}>
               <div className={style.ProductSildes}>
@@ -138,24 +100,24 @@ export default function Slider() {
                         <span className={style.tags}>{product.vendor}</span>
                       )}
                     </div>
-                    <p>
+                    <div className={style.time}>
                       {" "}
                       about 1 hour{" "}
                       <span style={{ textDecoration: "line-through" }}>
                         {"(23 days)"}
                       </span>
-                    </p>
+                    </div>
                     <hr />
                     <div className={style.descCol}>
                       <p className={style.title}>
                         {product.productName.slice(0, 15)}...
                       </p>
-                      <p>{product.description.slice(0, 25)}</p>
+                      <p className={style.desc}>{product.description.slice(0, 25)}</p>
                     </div>
                   </div>
                 </Link>
                 <div className={style.priceCol}>
-                  <p className={style.price}>
+                  <div className={style.price}>
                     <span style={{ color: "red", margin: "0px 2px" }}>
                       {" "}
                       ${product.floorPrice ? product.floorPrice : ""}
@@ -168,7 +130,7 @@ export default function Slider() {
                         product.floorPrice
                       ).toFixed(0)}% off`}
                     </span>
-                  </p>
+                  </div>
                   <button className={style.btn}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +138,7 @@ export default function Slider() {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      width={24}
+                      width={20}
                     >
                       <path
                         strokeLinecap="round"
@@ -189,9 +151,6 @@ export default function Slider() {
               </div>
             </SwiperSlide>
           ))}
-          <div className={style.customnextbutton}>
-            <CustomNextButton />
-          </div>
         </Swiper>
       </div>
     </div>
