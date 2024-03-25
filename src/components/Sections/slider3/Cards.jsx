@@ -94,7 +94,7 @@ export default function Cards() {
                   </svg>
                 </button>
               </div>
-              <Link style={{fontSize:"14px",color:"black"}} href='/products'>see more</Link>
+              <Link style={{fontSize:"14px",color:"black"}} href='/products/cetagory/menswear/top'>see more</Link>
             </div>
 
         ))}
