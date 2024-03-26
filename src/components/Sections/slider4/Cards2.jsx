@@ -21,7 +21,7 @@ export default function Cards2() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get("https://adminpanellive.vercel.app/api/products");
-      setProducts(response.data.products.slice(6, 11)); // Slice to get only 6 products
+      setProducts(response.data.products.slice(5, 11)); // Slice to get only 6 products
     } catch (error) {
       console.error("Error fetching products:", error);
     }
