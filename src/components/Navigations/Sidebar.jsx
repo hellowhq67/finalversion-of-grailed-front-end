@@ -118,9 +118,11 @@ function Sidebar({ toggleSidebar, isOpen }) {
         </AccordionSummary>
         <AccordionDetails>
           <div className={style.checkboxMobile}>
-            <Link href="/products/cetagory/menswear/top">TOPS</Link>
+            <Link href="/products/cetagory/menswear/tops">TOPS</Link>
             <Link href="/products/cetagory/menswear/bottoms">bottoms</Link>
             <Link href="/products/cetagory/menswear/footwear">footwear</Link>
+            <Link href="/products/cetagory/menswear/accessories">accessories</Link>
+ 
           </div>
         </AccordionDetails>
       </Accordion>
