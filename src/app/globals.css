@@ -11,11 +11,13 @@ body{
   width: 100%;
   height: 100%;
   font-family: "SF Pro Text", -apple-system, Helvetica, Arial, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  overflow-x: hidden;
 }
 
 hr {
   border: none;
   border-top: 1px solid #ccc; /* Color of the horizontal line */
   margin: 10px 0; /* Margin above and below the line */
+
 }
 
