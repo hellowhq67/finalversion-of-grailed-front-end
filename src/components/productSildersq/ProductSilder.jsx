@@ -36,19 +36,23 @@ export default function ProductSilder({
           <img src={productImage1} alt="" />
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide}>
-          <img src={productImage1} alt="" />
+        {productImage1?<img src={productImage1} alt="" />:"" }
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide}>
-          <img src={productImage2} alt="" />
+        {productImage2?<img src={productImage2} alt="" />:""
+
+}
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide}>
-          <img src={productImage3} alt="" />
+        {productImage3?<img src={productImage3} alt="" />:""
+
+}
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide}>
-          <img src={productImage4} alt="" />
+        {productImage4?<img src={productImage4} alt="" />:""}
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide}>
-          <img src={productImage5} alt="" />
+        {productImage5?<img src={productImage5} alt="" />:""}
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -62,19 +66,27 @@ export default function ProductSilder({
       >
       
         <SwiperSlide className={style.SwiperSlide2}>
-          <img src={productImage1} alt="" />
+        {productImage1?<img src={productImage1} alt="" />:"" }
+
         </SwiperSlide>{" "}
         <SwiperSlide className={style.SwiperSlide2}>
-          <img src={productImage2} alt="" />
+          {productImage2?<img src={productImage2} alt="" />:""
+
+          }
         </SwiperSlide>{" "}
         <SwiperSlide className={style.SwiperSlide2}>
-          <img src={productImage3} alt="" />
+        {productImage3?<img src={productImage3} alt="" />:""
+
+}
+          
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide2}>
-          <img src={productImage4} alt="" />
+        {productImage4?<img src={productImage4} alt="" />:""}
+    
         </SwiperSlide>
         <SwiperSlide className={style.SwiperSlide2}>
-          <img src={productImage5} alt="" />
+          {productImage5?<img src={productImage5} alt="" />:""}
+     
         </SwiperSlide>
       </Swiper>
     </div>
