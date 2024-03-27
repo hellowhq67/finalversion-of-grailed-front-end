@@ -28,7 +28,6 @@ import Cards2 from "../Sections/slider4/Cards2";
 import Page from "../Sections/article/Page";
 import Footer from "../Navigations/Footer";
 import { UseAuth } from "@/app/context/AuthContext";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { ToastContainer, toast } from "react-toastify";
 import ProductSilder from "../productSildersq/ProductSilder";
 import Modals from "../authModal/Modals";
@@ -62,7 +61,9 @@ const style = {
 
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
+    const response = await axios.get(
+      "https://adminpanellive.vercel.app/api/products/total"
+    );
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -130,11 +131,11 @@ function ProductDetail({ productId }) {
     const fetchData = async () => {
       try {
         setLoading(true); // Set loading to true before fetching data
-  
+
         // Fetch user data
         const usersData = await getAllUsersData();
         const user = usersData.find((user) => user.userid === sellerID);
-  
+
         // If user data is found, set user data state and localStorage
         if (user) {
           const userData = {
@@ -144,25 +145,26 @@ function ProductDetail({ productId }) {
             profileImage: user.profileimgae || "",
             feedbacks: user.feedbacks.length || "",
             feedbacksdata: [user.feedbacks] || "",
+            location: user.location || "",
           };
           setUserData(userData);
           localStorage.setItem("userData", JSON.stringify(userData));
         }
-  
+
         // Fetch products for the seller
         const allProducts = await fetchProducts();
         const sellerProducts = allProducts.filter(
           (product) => product.userId === sellerID
         );
         setSellerproduct(sellerProducts);
-  
+
         setLoading(false); // Set loading to false after fetching data
       } catch (error) {
         console.error("Error fetching user data:", error);
         setLoading(false);
       }
     };
-  
+
     // Fetch data when sellerID or getAllUsersData changes
     if (sellerID) {
       fetchData();
@@ -368,7 +370,7 @@ function ProductDetail({ productId }) {
         <div style={{ marginTop: "5rem", borderBottom: "1px solid black" }}>
           <NestedMenu />
         </div>
- <span style={{ margin: "20px" ,display:"flex",gap:"6px",alignItems:"center" }}>
+        <span style={{ margin: "20px" ,display:"flex",gap:"6px",alignItems:"center" }}>
           <Link
             style={{ color: "black", fontSize:"13px",margin:"0p 4px" }}
             href={`/products/cetagory/${product.department.toLowerCase()}/${product.category.toLowerCase()}`}
@@ -444,25 +446,27 @@ function ProductDetail({ productId }) {
                 {product.condition}
               </p>
               <h1 className={styles.price}>${product.floorPrice}</h1>
-               <div style={{display:"flex",alignItems:"center"}}>
-              <p>  Shipping — {selectedShipping} {product.shippings}</p>
-               <div style={{transform:"translateY(-5px)"}}>
-               <FormControl variant="standard" sx={{ m: 1 }} >
-                  <Select
-                    labelId="shipping-label"
-                    id="shipping"
-                    value={selectedShipping}
-                    onChange={handleShippingChange}
-                    label="Shipping"
-                    sx={{ fontSize: "14px" }}
-                  >
-                    <MenuItem value="">Select</MenuItem>
-                    <MenuItem value="Asia">Asia</MenuItem>
-                    <MenuItem value="Europe">Europe</MenuItem>
-                    <MenuItem value="Canada">Canada</MenuItem>
-                  </Select>
-                </FormControl>
-               </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span>
+                  {"+"} {product.shippings} Shipping —{userData.location} to
+                </span>
+                <div style={{ transform: "translateY(-3px)", margin: "4px" }}>
+                  <FormControl variant="standard" sm={{ m: 1 }}>
+                    <Select
+                      labelId="shipping-label"
+                      id="shipping"
+                      value={selectedShipping}
+                      onChange={handleShippingChange}
+                      label="Shipping"
+                      sx={{ fontSize: "10px" }}
+                    >
+                      <MenuItem value="">Select</MenuItem>
+                      <MenuItem value="Asia">Asia</MenuItem>
+                      <MenuItem value="Europe">Europe</MenuItem>
+                      <MenuItem value="Canada">Canada</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
               </div>
 
               {!user ? (
@@ -548,10 +552,11 @@ function ProductDetail({ productId }) {
                   </span>
                   <div style={{ margin: "10px 0px", fontSize: "14px" }}>
                     {`${userData.transaction}  Transactions`}
-                    <Link  href={`/profile/designer/${product.userId}`} style={{ color: "black" }}>
-                      {`.${
-                        sellerProduct.length
-                      } items for sell`}
+                    <Link
+                      href={`/profile/designer/${product.userId}`}
+                      style={{ color: "black" }}
+                    >
+                      {`.${sellerProduct.length} items for sell`}
                     </Link>
                   </div>
                   <div
