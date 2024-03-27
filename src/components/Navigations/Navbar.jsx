@@ -155,7 +155,7 @@ export default function Navbar() {
                 <Link href={"/massages"}>MESSAGES</Link>
                 <Link href={"/favorites/"}>FAVORITES</Link>
                 <Link href={"/massages"}>PURCHASES</Link>
-                              <Link className={style.sell} href={`/sell/${user.uid}`}>
+                              <Link href={`/sell/${user.uid}`}>
                 SELL
               </Link>
                 <Link  href={`/sell/${user.uid}`}>FOR SALE</Link>
