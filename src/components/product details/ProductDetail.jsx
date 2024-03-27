@@ -454,7 +454,7 @@ function ProductDetail({ productId }) {
                 </span>
                 <div style={{ transform: "translateY(-3px)", margin: "4px" }}>
                   <FormControl variant="standard" sm={{ m: 1 }}>
-                 <InputLabel id="demo-simple-select-standard-label">United States</InputLabel>
+                 <InputLabel id="demo-simple-select-standard-label">{selectedShipping}</InputLabel>
                     <Select
                       labelId="shipping-label"
                       id="shipping"
@@ -463,7 +463,6 @@ function ProductDetail({ productId }) {
                       label="Shipping"
                       sx={{ fontSize: "10px" }}
                     >
-                      <MenuItem value="">Select</MenuItem>
                       <MenuItem value="United States">United States</MenuItem>
                       <MenuItem value="Asia">Asia</MenuItem>
                       <MenuItem value="Europe">Europe</MenuItem>
