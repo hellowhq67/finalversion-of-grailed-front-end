@@ -67,7 +67,7 @@ export default function NestedMenu() {
         </ul>
       </li>
       <li  >
-        <Link className={style.sub1} href="/products/cetagory/womenswear/top"> WOMENSWEAR</Link>
+        <Link className={style.sub1} href="/products/cetagory/womenswear/tops"> WOMENSWEAR</Link>
        
       </li>
       <li  >
