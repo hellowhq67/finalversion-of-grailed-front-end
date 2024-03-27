@@ -151,15 +151,16 @@ export default function Navbar() {
                 </div>
               </Link>
               <div className={style.prfilDropdown}>
-                <Link href={`/profile/${user.uid}`}> {user.displayName} </Link>
+                <Link  href={`/profile/${user.uid}`}> {!user.displayName?user.email.slice(0,3):user.displayName} </Link>
                 <Link href={"/massages"}>MESSAGES</Link>
                 <Link href={"/favorites/"}>FAVORITES</Link>
                 <Link href={"/massages"}>PURCHASES</Link>
-                <Link href={"/massages"}>SELL</Link>
-                <Link href={"/massages"}>FOR SALE</Link>
-                <Link href={"/massages"}>SOLD</Link>
-                <Link href={"/massages"}>SOLD</Link>
-                <Link href={"/massages"}>MY ACCOUNT</Link>
+                              <Link className={style.sell} href={`/sell/${user.uid}`}>
+                SELL
+              </Link>
+                <Link  href={`/sell/${user.uid}`}>FOR SALE</Link>
+                <Link href={`/sell/${user.uid}`}>SOLD</Link>
+                <Link  href={`/profile/${user.uid}`}>MY ACCOUNT</Link>
                 <Link onClick={handelLogout} href="">
                   SIGN OUT
                 </Link>
