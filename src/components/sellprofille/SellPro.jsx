@@ -9,7 +9,7 @@ import axios from "axios";
 import { Rating, StarIcon } from "@mui/material";
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
+    const response = await axios.get("https://adminpanellive.vercel.app/api/total");
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
