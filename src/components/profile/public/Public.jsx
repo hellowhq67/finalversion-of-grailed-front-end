@@ -16,7 +16,7 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 const fetchProducts = async () => {
   try {
     const response = await axios.get(
-      "https://adminpanellive.vercel.app/api/total"
+      "https://adminpanellive.vercel.app/api/products/total"
     );
     return response.data.products;
   } catch (error) {
