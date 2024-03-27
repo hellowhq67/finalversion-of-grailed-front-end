@@ -370,7 +370,7 @@ function ProductDetail({ productId }) {
         <div style={{ marginTop: "5rem", borderBottom: "1px solid black" }}>
           <NestedMenu />
         </div>
-        <span style={{ margin: "20px" ,display:"flex",gap:"6px",alignItems:"center" }}>
+        <span className={style.cetagoryLink} >
           <Link
             style={{ color: "black", fontSize:"13px",margin:"0p 4px" }}
             href={`/products/cetagory/${product.department.toLowerCase()}/${product.category.toLowerCase()}`}
@@ -392,7 +392,7 @@ function ProductDetail({ productId }) {
             {product.designers} {product.subcategory.toLowerCase()}
           </Link>
           {"> "}
-          <p style={{color:"gray",fontSize:"12px"}}>{product.productName}</p>
+          <span style={{color:"gray",fontSize:"12px"}}>{product.productName}</span>
         </span>
         <div className={styles.wrapper}>
           <ProductSilder
