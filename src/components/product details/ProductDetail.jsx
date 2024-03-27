@@ -368,10 +368,29 @@ function ProductDetail({ productId }) {
         <div style={{ marginTop: "5rem", borderBottom: "1px solid black" }}>
           <NestedMenu />
         </div>
-        <span style={{ margin: "20px" }}>
-          <Link href="">{product.designers}</Link>
+ <span style={{ margin: "20px" ,display:"flex",gap:"6px",alignItems:"center" }}>
+          <Link
+            style={{ color: "black", fontSize:"13px",margin:"0p 4px" }}
+            href={`/products/cetagory/${product.department.toLowerCase()}/${product.category.toLowerCase()}`}
+          >
+            {product.designers} {product.department.toLowerCase()}
+          </Link>
           {"> "}
-          <span >{product.productName}</span>
+          <Link
+            style={{ color: "black", fontSize:"13px",margin:"0p 4px" }}
+            href={`/products/cetagory/${product.department.toLowerCase()}/${product.category.toLowerCase()}`}
+          >
+            {product.designers} {product.category.toLowerCase()}
+          </Link>
+          {"> "}
+          <Link
+            style={{ color: "black", fontSize:"13px",margin:"0p 4px" }}
+            href={`/products/cetagory/${product.department.toLowerCase()}/${product.category.toLowerCase()}`}
+          >
+            {product.designers} {product.subcategory.toLowerCase()}
+          </Link>
+          {"> "}
+          <p style={{color:"gray",fontSize:"12px"}}>{product.productName}</p>
         </span>
         <div className={styles.wrapper}>
           <ProductSilder
