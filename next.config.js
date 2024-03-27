@@ -19,12 +19,12 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: "/api/follow/:path*", // Match any API route
+    {
+        source: "/api/products/total/:path*", // Match any API route
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: "http://localhost:3001", // Set your frontend origin
+            value: "https://adminpanellive.vercel.app/", // Set your frontend origin
           },
           {
             key: "Access-Control-Allow-Methods",
