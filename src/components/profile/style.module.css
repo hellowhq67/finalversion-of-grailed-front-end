@@ -1,281 +1,154 @@
-.profileRow{
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .profileCol {
-    display: flex;
-    align-items: center;
-    gap: 6rem;
-  }
- 
-  .proImgae {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  .profileWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 8rem;
-  }
-  .profileInfo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-  }
-  .edits {
-    padding: 10px 19px;
-    border: 1px solid rgba(128, 128, 128, 0.603);
-  }
-  .buttonCol {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .profileWrapper2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 9rem;
-  }
-  .selectFliter {
-    padding: 10px 20px;
-    margin: 0px 4px;
-    font-weight: bold;
-  }
-  .divder {
-    width: 80%;
-    margin: auto;
-    height: 1px;
-    background: gray;
-  }
-  .tab {
-    display: flex;
-    flex-direction: column;
-  }
-  .tabButton{
-      width: 100%;
-      padding: 1rem 10rem;
-      display: flex;
-      gap: 40px;
-  }
-  .tabButton span{
-      cursor: pointer;
-  }
-  .listings{
-      cursor: pointer;
-      border-bottom: 1px solid black;
-  
-  }
-  .feedbacK{
-      border-bottom: 1px solid black;
-  }
-.profileEditWrappper{
+.profileCol {
+  display: flex;
+  align-items: flex-end;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+.proimg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0px 10px;
+}
+.proimg div {
+  display: flex;
+  flex-direction: column;
+}
+.proImgae {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.profileWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 8rem;
+}
+.profileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 0px 2rem;
+}
+.edits {
+  padding: 10px 19px;
+  background: rgb(0, 0, 0);
+  color: white;
+}
+.buttonCol {
+  display: flex;
+  gap: 10px;
+}
+
+.selectFliter {
+  padding: 10px 20px;
+  margin: 0px 4px;
+  font-weight: bold;
+}
+.divder {
+  width: 80%;
+  margin: auto;
+  height: 1px;
+  background: gray;
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+}
+.tabButton {
+  width: 100%;
+  padding: 1rem 10rem;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.tabButton span {
+  cursor: pointer;
+}
+.listings {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+.feedbacK {
+  border-bottom: 1px solid black;
+}
+.profileEditWrappper {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
   gap: 10rem;
-
 }
-.profileLink li{
+.profileLink li {
   margin: 40px 20px;
   list-style: none;
 }
-.profileLink li a{
+.profileLink li a {
   text-decoration: none;
-  color:black;
-
+  color: black;
 }
-.formWrapper{
+.formWrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
   width: 40vw;
 }
-.formWrapper input{
-  padding: 15px 40px ;
+.formWrapper input {
+  padding: 15px 40px;
   margin-right: 20px;
 }
 
-.formWrapper select{
-  padding: 15px 40px ;
+.formWrapper select {
+  padding: 15px 40px;
   margin-right: 20px;
   font-weight: bold;
   font-size: 1rem;
   text-transform: uppercase;
 }
-.formFlex{
+.formFlex {
   display: flex;
 }
-.formWrapper textarea{
-  padding: 45px 40px ;
+.formWrapper textarea {
+  padding: 45px 40px;
 }
-.formWrapper button{
+.formWrapper button {
   padding: 10px 20px;
   background-color: black;
   color: white;
   font-size: 1rem;
-
 }
-
-@media (max-width:750px) {
-  .profileCol {
-    display: flex;
-    align-items:center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-    
-  }
- 
-  .formFlex{
+.activeTab {
+  border-bottom: 2px solid black;
+  margin: 0px 10px;
+}
+.sallerFlex {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4rem 0px;
+  text-align: center;
+  background: rgb(254, 254, 254);
+}
+.bacthCOL {
+  display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
-  .profileRow{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    font-size: 15px;
-  }
-  .profileEditWrappper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70vw;
-    height: 100%;
-  }
-  .profileEditWrappper div {
-    width: 100%;
-    padding: 10px;
-    height: 100%;
-  }
-  .profileWrapper{
-    width: 100%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  .profileInfo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    gap: 10px;
-  }
-  .tab{
-    display: none;
-  }
-}
-.ProductSildes{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 15rem;
-}
-.imgCol {
-  position: relative;
-
-} 
-.border1{
-width: 30rem;
-height: 1px;
-background: black;
-}
-
-.imgCol img{
-  width: 15rem;
-  height: 16rem;
-}
-.tags{
-  position: absolute;
-  top:4%;
-  left: 2%;
-  background-color: black;
-  color: whitesmoke;
-  padding: 5px 4px;
-}
-.descCol{
-  display: flex;
-  align-items: flex-start;
-  justify-content:flex-start;
-  flex-direction: column;
-  
-}
-.flex{
-display: flex;
-align-items: center;
-width: 100%;
-justify-content:space-between;
-margin: 6px 0px;
-padding: 20px 13rem;
-}
-.wrapper{
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  width: 100vw;
-  height: 100%;
-
-
-}
-.wrapper2{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  gap: 10px;
-}
-
-
-.priceCol {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  margin: 4px 0px;
-}
-.btn {
-  background: transparent;
-  border: none;
-}
-.title {
-  font-weight: bold;
-  margin: 4px 0px;
-}
-.price {
-  font-weight: bold;
-}
-.floorPrice{
-  text-decoration: line-through;
-  color: gray;
-  font-size: 13px;
-  margin: 3px;
-}
-.discount{
-  font-size: 12px;
-}
-.price{
-  color: black;
-  
-}
-.floorPrice {
-  text-decoration: line-through;
-  color: gray;
-  font-size: 13px;
-  margin: 3px;
-}
 .sellerScore {
   display: flex;
   flex-direction: column;
@@ -312,59 +185,305 @@ padding: 20px 13rem;
   flex-direction: column;
   gap: 20px;
 }
-.close{
+.close {
   display: none;
 }
-.sallerFlex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 4rem 0px;
-  text-align: center;
-  background: rgb(254, 254, 254);
+@media (max-width: 750px) {
+  .profileCol {
+    display: flex;
+    align-items: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .proimg {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .proImgae {
+    width: 70px;
+    height: 70px;
+  }
+  .profileWrapper {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px;
+    font-size: 14px;
+  }
+  .bio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .close {
+    display: block;
+  }
+  .tabButton {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edits {
+    padding: 7px 29px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+  .buttonCol {
+    display: flex;
+    gap: 10px;
+  }
+  .shear {
+    padding: 0px 5px;
+  }
+  .shear svg {
+    font-weight: 200;
+    width: 20px;
+    height: 20px;
+  }
+  .feedcard {
+    display: flex;
+    width: 20rem;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.253);
+    margin: 40px 0px;
+    padding: 0;
+    gap: 20px;
+    font-size: 10px;
+  }
+  .feedcard img {
+    width: 80px;
+  }
+
+  .bacthCOL div{
+    font-size: 8px;
+  }
 }
-.bacthCOL {
+
+.productFilter {
+  width: 15vw;
+  overflow: scroll;
+  height: 100vh;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  margin-right: 20px;
+}
+.productFilter::-webkit-scrollbar {
+  display: none;
+}
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.checkbox input {
+  margin: 10px 0px;
+}
+
+.ProductSildes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 15rem;
+}
+.imgCol {
+  position: relative;
+}
+.imgCol img {
+  width: 13rem;
+  height: 15rem;
+}
+.tags {
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  background-color: black;
+  color: whitesmoke;
+  padding: 5px 4px;
+}
+.descCol {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 4rem 8rem;
+  width: 100vw;
+  height: 100%;
+}
+.wrapper2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
+  width: 100vw;
+  height: 100%;
+}
+.productWrapprer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 60vw;
+  height: 100%;
+}
+.productWrapprer .ProductSildes {
+  margin: 20px;
+}
+.priceCol {
   display: flex;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0px;
+}
+.btn {
+  background: transparent;
+  border: none;
+}
+.title {
+  font-weight: bold;
+  margin: 4px 0px;
+}
+.price {
+  font-weight: bold;
+}
+.floorPrice {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 13px;
+  margin: 3px;
+}
+.discount {
+  font-size: 12px;
+}
+.sizeBox {
+  width: 100%;
+  background: whitesmoke;
+  color: rgba(128, 128, 128, 0.65);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+}
+.sizeBox {
+  font-size: 12px;
+}
+.sizeBox .btn {
+  background: rgb(255, 255, 255);
+  padding: 10px 25px;
+  border-radius: 3px;
+  margin-top: 4px;
+  font-weight: bold;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+}
+.selectFliter {
+  padding: 10px 20px;
+  margin: 0px 4px;
+  font-weight: bold;
+}
+.fiterButton {
+  display: none;
 }
 @media (max-width: 750px) {
-  .ProductSildes{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      width: 15rem;
+  .hearContent {
+    display: none;
   }
-  .wrapper{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      width: 100%;
-      height: 100%;
-  
+  .fiterButton {
+    display: block;
+    margin: 10px 20px;
   }
-  .wrapper2{
+  .productFilter {
+    width: 100vw;
+    overflow: scroll;
+    height: 100vh;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    position: absolute;
+    top: 14%;
+    left: 0;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    background: white;
+  }
+
+  .productFilter.closed {
+    transform: translateX(-100%);
+    /* Hide the sidebar when closed */
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .wrapper2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+    width: 100vw;
+    height: 100%;
+    padding: 0px 2rem;
+  }
+  .productWrapprer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width: 100vw;
-    gap: 20px;
+    height: 100%;
+    font-size: 15px;
   }
-  .flex{
+  .selectFliter {
+    display: none;
+  }
+  .ProductSildes {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 7rem;
+    font-size: 10px;
+  }
+  .imgCol {
+    position: relative;
+  }
+  .imgCol img {
     width: 100%;
-    justify-content:space-between;
-    margin: 6px 0px;
-    padding: 20px 1rem;
-    }
-    .profileLink{
-      display: none;
-    }
+    height: auto;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .descCol p {
+    font-size: 10px;
+  }
 }
