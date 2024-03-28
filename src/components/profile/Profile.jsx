@@ -16,7 +16,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products");
+    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
     console.log("res", response);
     return response.data.products;
   } catch (error) {
