@@ -46,6 +46,28 @@ export default function page() {
     }
     setIsFetching(false);
   };
+    useEffect(() => {
+    const fetchTotalProducts = async () => {
+      try {
+        const response = await axios.get(
+          "https://adminpanellive.vercel.app/api/products/total"
+        );
+
+        const totalProducts = response.data.products.length;
+        settotalpro(totalProducts);
+
+        const itemsPerPage = 6; // Replace with your limit per page
+        const totalPagesCount = Math.ceil(totalProducts / itemsPerPage);
+        setTotalPages(totalPagesCount);
+        // Fetch products for the initial page
+        fetchProducts(page);
+      } catch (error) {
+        console.error("Error fetching total products:", error);
+      }
+    };
+
+    fetchTotalProducts();
+  }, []);
   const handleSortChange = (event) => {
     const option = event.target.value;
     setSortOption(option);
