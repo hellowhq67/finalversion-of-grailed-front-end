@@ -10,13 +10,52 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { user, logOut } = UseAuth();
+  const { user, logOut,getAllUsersData } = UseAuth();
+  
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen); 
   };
+  const userID = user? user.uid :null;
+  const [userData, setUserData] = useState({
+    location: "",
+    userDisplayName: "",
+    userBio: "",
+    reting: "",
+    transaction: "",
+    profileImage: "",
+    feedbacks: Number,
+    feedbacksdata: [],
+  });
+  useEffect(() => {
+    const fetChUserData = async () => {
+      try {
+        const usersData = await getAllUsersData();
+        const users = usersData.find((users) => users.userid === userID);
 
+        if (users) {
+          setUserData({
+            location: users.location || "",
+            userDisplayName: users.displayName || "",
+            userBio: users.bio || "",
+            reting: users.reting || "",
+            transaction: users.feedbacks.length || "",
+            profileImage: users.profileimgae || "",
+            feedbacks: users.feedbacks.length || "",
+            feedbacksdata: [users.feedbacks] || "",
+          });
+         
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+ 
+    fetChUserData();
+
+  }, []);
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
@@ -143,7 +182,7 @@ export default function Navbar() {
                 <div className={style.userColwrapper}>
                   <Link href={`/profile/${user.uid}`}>
                     <img
-                      src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.1.1502403816.1643644406&semt=sph"
+                      src={!userData.profileImage?null:userData.profileImage}
                       className={style.profile}
                       alt=""
                     />
@@ -152,15 +191,12 @@ export default function Navbar() {
               </Link>
               <div className={style.prfilDropdown}>
                 <Link  href={`/profile/${user.uid}`}> {!user.displayName?user.email.slice(0,3):user.displayName} </Link>
-                <Link href={"/massages"}>MESSAGES</Link>
+                <Link href={"/profile/message"}>MESSAGES</Link>
                 <Link href={"/favorites/"}>FAVORITES</Link>
-                <Link href={"/massages"}>PURCHASES</Link>
-                              <Link href={`/sell/${user.uid}`}>
-                SELL
-              </Link>
-                <Link  href={`/sell/${user.uid}`}>FOR SALE</Link>
-                <Link href={`/sell/${user.uid}`}>SOLD</Link>
-                <Link  href={`/profile/${user.uid}`}>MY ACCOUNT</Link>
+                <Link href={"/profile/purchases"}>PURCHASES</Link>
+                <Link href={`/sell/${user.uid}`}>SELL</Link>
+                <Link href={"/sell/sold"}>SOLD</Link>
+                <Link href={`/profile/${user.uid}`}>MY ACCOUNT</Link>
                 <Link onClick={handelLogout} href="">
                   SIGN OUT
                 </Link>
