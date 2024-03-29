@@ -1,0 +1,23 @@
+.profileEditWrappper{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+   gap: 10px;
+  
+  }
+  .profileLink li{
+    margin: 40px 20px;
+    list-style: none;
+  }
+  .profileLink li a{
+    text-decoration: none;
+    color:black;
+  
+  }
+  .contener{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    padding: 30px 0px;
+  }
