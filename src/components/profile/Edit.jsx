@@ -23,7 +23,9 @@ function Edit() {
     updateProfile(displayName, bio, phoneNumber, location,profileimgae);
     toast.success("Profile updated successfully!");
   };
-
+if(!user){
+  return null;
+}
   return (
     <div>
       <ToastContainer />
