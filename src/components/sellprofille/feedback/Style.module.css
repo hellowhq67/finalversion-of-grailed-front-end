@@ -1,0 +1,249 @@
+.prfileRow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .profileCol {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+  .proimg {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .edits{
+    background-color: black;
+    color: white;
+  }
+  .edits a {
+    text-decoration: none;
+    color:  white;
+  }
+  .infos{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0px 10px;
+  }
+  .profileWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 8rem;
+  }
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .proImgae {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+  }
+  .edits {
+    padding: 10px 19px;
+    border: 1px solid rgba(128, 128, 128, 0.603);
+    color: white;
+  }
+  .edits a{
+    text-decoration: none;
+  }
+  .buttonCol {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .profileWrapper2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 9rem;
+  }
+  .selectFliter {
+    padding: 10px 20px;
+    margin: 0px 4px;
+    font-weight: bold;
+  }
+  .divder {
+    width: 80%;
+    margin: auto;
+    height: 1px;
+    background: gray;
+  }
+  .tab {
+    display: flex;
+    flex-direction: column;
+  }
+  .tabButton{
+      width: 100%;
+      padding: 1rem 10rem;
+      display: flex;
+      gap: 40px;
+  }
+  .tabButton span{
+      cursor: pointer;
+  }
+  .listings{
+      cursor: pointer;
+      border-bottom: 1px solid black;
+  
+  }
+  .feedbacK{
+      border-bottom: 1px solid black;
+  }
+  .listingsWrapper{
+    display: flex;
+    align-items: flex-start;
+    justify-content:flex-start;
+    width: 100%;
+    padding: 8rem;
+  }
+.listingsWrapperCol{
+  display: flex;
+  align-items: flex-start;
+
+}
+.profileLink{
+  margin-right: 5rem;
+}
+.profileLink li{
+  list-style: none;
+  margin: 20px;
+
+}
+.profileLink li a{
+  text-decoration: none;
+  color: rgba(128, 128, 128, 0.48);
+}
+
+.productTable {
+  width: 60vw;
+  border-collapse: collapse;
+}
+
+.productTable th,
+.productTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.productTable th {
+  background-color: #f2f2f2;
+}
+
+.productTable tr:hover {
+  background-color: #f2f2f2;
+}
+
+.productTable td button {
+  padding: 8px 12px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.productTable td button:hover {
+  background-color: #c82333;
+}
+@media (max-width:750px) {
+  .profileCol {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    
+  }
+ 
+  .formFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+  .profileRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    font-size: 15px;
+  }
+  .profileEditWrappper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 100%;
+  }
+  .profileEditWrappper div {
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+  }
+  .profileWrapper{
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+  }
+  .tab{
+    display: none;
+  }
+  .listingsWrapperCol{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .productTable {
+    width:100vw;
+    border-collapse: collapse;
+    font-size: 7px;
+  }
+  
+  .productTable th,
+  .productTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .productTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .productTable tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .productTable td button {
+    padding: 9px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .productTable td button:hover {
+    background-color: #c82333;
+  }
+}
