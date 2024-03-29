@@ -62,6 +62,18 @@ function AdressForm({ sellerID }) {
       </div>
       <div className={style.profileEditWrappper}>
         <ul className={style.profileLink}>
+        <li>
+            <Link
+              href="/profile/message"
+              
+            >
+              MESSAGEAS
+            </Link>
+          </li>
+          <li>
+            <Link href="/profile/purchases"> PURCHASES</Link>
+          </li>
+
           <li>
             <Link href="/profile/edit">{" MY ACCOUNT "}</Link>
           </li>
