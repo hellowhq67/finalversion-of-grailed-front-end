@@ -23,9 +23,7 @@ function Edit() {
     updateProfile(displayName, bio, phoneNumber, location,profileimgae);
     toast.success("Profile updated successfully!");
   };
-  if (!user) {
-    return null; // Add loading or redirect logic if needed
-  }
+
   return (
     <div>
       <ToastContainer />
@@ -41,6 +39,20 @@ function Edit() {
       </div>
       <div className={style.profileEditWrappper}>
         <ul className={style.profileLink}>
+            
+        <li>
+            <Link
+              href="/profile/message"
+              
+            >
+              MESSAGEAS
+            </Link>
+          </li>
+          <li>
+            <Link href="/profile/purchases"> PURCHASES</Link>
+          </li>
+
+          
           <li>
             <Link href=""> MY ACCOUNT</Link>
           </li>
