@@ -9,7 +9,7 @@ import axios from "axios";
 import { Rating, StarIcon } from "@mui/material";
 const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://adminpanellive.vercel.app/api/products/total");
+    const response = await axios.get("http://localhost:3001/api/products/total");
     return response.data.products;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -77,16 +77,23 @@ export default function SellPro({ userID }) {
   const filteredProducts = products.filter(
     (product) => product.userId === userID
   );
-  const handleDeleteProduct = async (productId) => {
-    try {
-      const response = await axios.delete(`https://adminpanellive.vercel.app/api/products/total/${productId}`);
-      console.log("Product deleted successfully:", response.data);
+const handleDeleteProduct = async (productId) => {
+  try {
+    const response = await fetch(`https://adminpanellive.vercel.app/api/products/total/${productId}`, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      console.log("Product deleted successfully");
       // Update the products state to remove the deleted product
       setProducts(products.filter((product) => product._id !== productId));
-    } catch (error) {
-      console.error("Error deleting product:", error);
+    } else {
+      throw new Error('Failed to delete product');
     }
-  };
+  } catch (error) {
+    console.error("Error deleting product:", error);
+  }
+};
+
 
   return (
     <div>
@@ -183,30 +190,26 @@ export default function SellPro({ userID }) {
                 <h4 href="">MY ITEMS</h4>
               </li>
               <li>
-                <Link href="/sell">FOR SELL</Link>
+                <Link style={{textDecoration:"underline",color:"black"}} href="/sell">FOR SELL</Link>
               </li>
               <li>
                 <Link href="/sell/sold/">SOLD</Link>
               </li>
-              <li>
-                <Link href="/sell">DRAFTS</Link>
-              </li>
+              
             </ul>
             <ul className={style.profileLink}>
               <li>
                 <h4>MY PROFILE</h4>
               </li>
               <li>
-                <Link href="/feedback">FEEDBACK</Link>
+                <Link href="/sell/feedback">FEEDBACK</Link>
+              </li>
+          
+              <li>
+                <Link href="/sell/payments">PAYMENTS</Link>
               </li>
               <li>
-                <Link href="/vacation-mode">VACATION MODE</Link>
-              </li>
-              <li>
-                <Link href="/payments">PAYMENTS</Link>
-              </li>
-              <li>
-                <Link href="/settings">SETTINGS</Link>
+                <Link href="/sell/settings">SETTINGS</Link>
               </li>
               <li>
                 <Link href="/help">HELP</Link>
